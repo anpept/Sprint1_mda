@@ -13,6 +13,9 @@
   <ion-list lines="none" color="fondo" class="ion-no-padding">
     <ion-item-sliding *ngFor="let product of products">
       <ion-item class="no-padding" color="fondo">
+        <ion-avatar slot="start">
+          <ion-img [src]="product.imageURL"></ion-img>
+        </ion-avatar>
         <ion-label>
           <p>Name: {{product.name}}</p>
           <p>Type: {{product.type}}</p>
