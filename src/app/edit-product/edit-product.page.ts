@@ -3,6 +3,10 @@ import {Product} from '../models/product.model';
 import {ActivatedRoute} from '@angular/router';
 import {LoadingController, NavController, ToastController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireStorage} from "@angular/fire/storage";
+import {Observable} from "rxjs";
+import {finalize} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-edit-product',
@@ -12,6 +16,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class EditProductPage implements OnInit {
   product = {} as Product;
   id: any;
+  urlImage: Observable<string>;
 
   constructor(
       private actRoute: ActivatedRoute,
@@ -19,7 +24,7 @@ export class EditProductPage implements OnInit {
       private firestore: AngularFirestore,
       private toastCtrl: ToastController,
       private navCtrl: NavController,
-      private storage: AngularFirestore
+      private storage: AngularFireStorage
   ) {
     this.id = this.actRoute.snapshot.paramMap.get('id');
   }
@@ -39,6 +44,7 @@ export class EditProductPage implements OnInit {
       this.product.name = data["name"];
       this.product.price = data["price"];
       this.product.type = data["type"];
+      this.product.imageURL = data["imageURL"];
     });
     (await loader).dismiss();
   }
@@ -90,7 +96,7 @@ export class EditProductPage implements OnInit {
     }).then(toastData => toastData.present());
   }
 
-  /*onUpload(event) {
+  onUpload(event) {
     //console.log('subir', event.target.files[0]);
     //Generar id único a la imagen
     const id = Math.random().toString(36).substring(2);
@@ -99,5 +105,5 @@ export class EditProductPage implements OnInit {
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
-  }*/
+  }
 }
