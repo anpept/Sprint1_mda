@@ -41,6 +41,10 @@ export class CarroPage {
     this.cantidades[i]++;
     this.precioTotal();
   }
+  anadirAlCarro(i){
+    this.products.push(i);
+    this.cantidades.push(1);
+  }
   restarCantidad(i:number){
     if(this.cantidades[i]==1){
       if (confirm("Se eliminara el producto. ¿Desea eliminar el producto)?")) {
