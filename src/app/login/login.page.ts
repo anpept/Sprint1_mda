@@ -29,7 +29,7 @@ user = {} as User;
 
           // redirect to home page
           if (user.email === 'admin@admin.com' && user.password === '123456') {
-            this.navCtrl.navigateRoot('home');
+            this.navCtrl.navigateRoot('admin-panel');
           } else {
             this.navCtrl.navigateRoot('user');
           }
