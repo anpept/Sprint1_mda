@@ -40,6 +40,7 @@ export class CarroPage {
   anadirCantidad(i:number){
     this.cantidades[i]++;
     this.precioTotal();
+    console.log(this.products);
   }
   anadirAlCarro(i){
     this.products.push(i);
