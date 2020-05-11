@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title class="ion-text-center">Edit Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="fondo">
+
+  <ion-item color="fondo">
+    <ion-img [src]="product.imageURL"></ion-img>
+  </ion-item>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text" [(ngModel)]="product.name" required=""></ion-input>
+  </ion-item>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Type</ion-label>
+    <ion-input type="text" [(ngModel)]="product.type" required=""></ion-input>
+  </ion-item>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Price</ion-label>
+    <ion-input type="text" [(ngModel)]="product.price" required=""></ion-input>
+  </ion-item>
+
+  <ion-item color="fondo" class="hidden">
+    <input #fileUpload id="fileUpload" type="file" accept=".jpg" (change)="onUpload($event)">
+    <ion-input type="text" [value]="urlImage | async" [(ngModel)]="product.imageURL"></ion-input>
+  </ion-item>
+  <ion-button class="ion-padding" color="cabecera" expand="full" (click)="fileUpload.click()">
+    Upload Image
+  </ion-button>
+
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="updateProduct(product)">
+    Edit
+  </ion-button>
+  <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/home'">
+    Cancel
+  </ion-button>
+</ion-content>
