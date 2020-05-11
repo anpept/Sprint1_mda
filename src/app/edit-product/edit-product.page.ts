@@ -73,17 +73,21 @@ export class EditProductPage implements OnInit {
 
   formValidation() {
     if (!this.product.name) {
-      this.showToast('Enter email');
+      this.showToast('Enter a name, please.');
       return false;
     }
 
     if (!this.product.price) {
-      this.showToast('Enter password');
+      this.showToast('Enter a price, please.');
+      return false;
+    }
+    if (isNaN(this.product.price)) {
+      this.showToast('Enter a valid price, please.');
       return false;
     }
 
     if (!this.product.type) {
-      this.showToast('Enter name');
+      this.showToast('Enter a type, please.');
       return false;
     }
     return true;
