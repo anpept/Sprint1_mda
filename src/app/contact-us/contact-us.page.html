@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>contact-us</ion-title>
+    <ion-title></ion-title>
+    <meta name="viewport" content="width=device-width" initial-sacle="1">
+    <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="contact-section">
 
+    <h1>Contact Us</h1>
+    <div class="border"></div>
+    <form class="contact-form" action="" method="post">
+      <input type="text" class="contact-form-text" placeholder="Your name">
+      <input type="email" class="contact-form-text" placeholder="Your email">
+      <input type="text" class="contact-form-text" placeholder="Your phone">
+      <textarea class="contact-form-text" placeholder="Your message"></textarea>
+      <input type="submit" class="contact-form-btn" value="Send">
+    </form>
+  </div>
 </ion-content>
