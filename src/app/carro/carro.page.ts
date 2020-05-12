@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { CarroService } from './carro.service';
 import * as firebase from 'firebase';
 
 @Component({
@@ -11,17 +12,22 @@ import * as firebase from 'firebase';
 })
 export class CarroPage {
   users: any;
-  products: any=[{price:5,name:"coca cola"}];
-  cantidades:any=[1];
+  products;
+  cantidades;
   total:number=0;
   constructor(
       private loadingCtrl: LoadingController,
       private toastCtrl: ToastController,
       private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
-      public navCtrl: NavController) {}
+      public navCtrl: NavController,
+      private carro: CarroService) {
+      }
 
   ionViewWillEnter() {
+    
+    this.products=this.carro.getProducts();
+    this.cantidades=this.carro.getCantidades();
     this.precioTotal();
   }
   // logout
@@ -40,11 +46,8 @@ export class CarroPage {
   anadirCantidad(i:number){
     this.cantidades[i]++;
     this.precioTotal();
+    this.carro.setCantidades(this.cantidades);
     console.log(this.products);
-  }
-  anadirAlCarro(i){
-    this.products.push(i);
-    this.cantidades.push(1);
   }
   restarCantidad(i:number){
     if(this.cantidades[i]==1){
@@ -59,15 +62,7 @@ export class CarroPage {
       this.cantidades[i]--;
     }
     this.precioTotal();
-    
-  }
-  añadirProducto(i){
-    this.cantidades[i]--;
-  }
-  showToast(message: string) {
-    this.toastCtrl.create({
-      message,
-      duration: 3000
-    }).then(toastData => toastData.present());
+    this.carro.setCantidades(this.cantidades);
+    this.carro.setProducts(this.products);
   }
 }
