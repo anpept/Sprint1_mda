@@ -24,12 +24,12 @@ export class HomePage {
   }
 
   // logout
+
   logout() {
     this.afAuth.signOut().then(() => {
       this.navCtrl.navigateRoot('login');
     });
   }
-
   async getProducts() {
     // show loader
     const loader = this.loadingCtrl.create({

@@ -9,6 +9,19 @@
 </ion-header>
 
 <ion-content color="fondo">
+  <ion-list>
+    <ion-item *ngFor="let order of orders">
+      <ion-label>
+        <p>Order Date: {{order.date}}</p>
+        <p>Products:</p>
+        <p *ngFor="let product of order.products">{{product}}</p>
+        <p>Price: {{order.price}}€</p>
+        <p>User: {{order.user}}</p>
+        <p>Address: {{order.address}}</p>
+        <p>State: {{order.estado}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
   <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/admin-panel'">
     Back
   </ion-button>
