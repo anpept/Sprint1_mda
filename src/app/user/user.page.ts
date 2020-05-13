@@ -43,6 +43,7 @@ export class UserPage implements OnInit {
             name: e.payload.doc.data()['name'],
             type: e.payload.doc.data()['type'],
             price: e.payload.doc.data()['price'],
+            imageURL: e.payload.doc.data()['imageURL'],
           };
         });
       });
@@ -60,7 +61,7 @@ export class UserPage implements OnInit {
       duration: 3000
     }).then(toastData => toastData.present());
   }
-  
+
   logout() {
     this.afAuth.signOut().then(() => {
       this.navCtrl.navigateRoot('login');
