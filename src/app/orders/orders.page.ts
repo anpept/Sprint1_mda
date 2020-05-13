@@ -9,9 +9,9 @@ import {Order} from '../models/order.model';
 })
 export class OrdersPage implements OnInit {
 
-  orders: Order[] = [
+  orders: Order[] =[
     {
-      date: new Date(2020, 3, 29, 12, 33, 32),
+      date: new Date(2020, 3, 12, 14, 33, 32),
       products: ['Pizza', 'Papas Fritas', 'Fanta Naranja', 'Ensalada'],
       price: 30.59,
       user: 'Antonio',

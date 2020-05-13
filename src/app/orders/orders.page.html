@@ -9,12 +9,12 @@
 </ion-header>
 
 <ion-content color="fondo">
-  <ion-list>
-    <ion-item *ngFor="let order of orders">
+  <ion-list color="fondo" class="ion-no-padding">
+    <ion-item *ngFor="let order of orders" color="fondo">
       <ion-label>
         <p>Order Date: {{order.date}}</p>
         <p>Products:</p>
-        <p *ngFor="let product of order.products">{{product}}</p>
+        <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product}}</p>
         <p>Price: {{order.price}}€</p>
         <p>User: {{order.user}}</p>
         <p>Address: {{order.address}}</p>
