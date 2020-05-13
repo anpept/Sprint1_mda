@@ -12,17 +12,21 @@
   <ion-list color="fondo" class="ion-no-padding">
     <ion-item *ngFor="let order of orders" color="fondo">
       <ion-label>
-        <p>Order Date: {{order.date}}</p>
+        <p>Order Date: {{ order.date | date:'dd/MM/yyyy HH:mm:ss'}}</p>
         <p>Products:</p>
         <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product}}</p>
         <p>Price: {{order.price}}€</p>
         <p>User: {{order.user}}</p>
         <p>Address: {{order.address}}</p>
         <p>State: {{order.estado}}</p>
+        <!--<ion-button class="ion-float-end iconSize20" [class.button-disabled]="order.estado !== 'Cancelado'" color="danger" >-->
+        <ion-button *ngIf="order.estado === 'Cancelado'" class="ion-float-end iconSize20" color="danger" >
+          <ion-icon class="iconSize20"  name="trash"></ion-icon>
+        </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/admin-panel'">
+  <ion-button color="cabecera" expand="full" [routerLink]="'/admin-panel'">
     Back
   </ion-button>
 </ion-content>
