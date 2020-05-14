@@ -60,7 +60,7 @@ export class EditUserPage implements OnInit {
       (await loader).dismiss();
 
       // redirect to home page
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('user');
     }
   }
 

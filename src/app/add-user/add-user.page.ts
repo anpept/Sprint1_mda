@@ -29,12 +29,16 @@ export class AddUserPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.firestore.collection('users').add(user);
+        
         await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data => {
           console.log(data);
-
+          this.firestore.collection('users').doc(data.user.uid).set(user);
           // redirect to home page
-          this.navCtrl.navigateRoot('home');
+          if(user.category=="cliente"){
+            this.navCtrl.navigateRoot('user/?id='+data.user.uid);
+          }else{
+            this.navCtrl.navigateRoot('home');
+          }
         });
       } catch (e) {
           this.showToast(e);
