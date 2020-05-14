@@ -20,7 +20,8 @@
         <p>Address: {{order.address}}</p>
         <p>State: {{order.estado}}</p>
         <!--<ion-button class="ion-float-end iconSize20" [class.button-disabled]="order.estado !== 'Cancelado'" color="danger" >-->
-        <ion-button *ngIf="order.estado === 'Cancelado'" class="ion-float-end iconSize20" color="danger" >
+        <ion-button *ngIf="order.estado === 'Cancelado'" class="ion-float-end iconSize20" color="danger"
+            (click)="deleteOrder(order.id)">
           <ion-icon class="iconSize20"  name="trash"></ion-icon>
         </ion-button>
       </ion-label>

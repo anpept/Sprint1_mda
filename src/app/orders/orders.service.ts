@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Order} from "../models/order.model";
+import {Order} from '../models/order.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  private orders: Order[] =[
+  private orders: Order[] = [
     {
-      id: 1,
+      id: '1',
       date: new Date(2020, 3, 12, 14, 33, 32),
       products: ['Pizza', 'Papas Fritas', 'Fanta Naranja', 'Ensalada'],
       price: 30.59,
@@ -17,7 +18,7 @@ export class OrdersService {
       estado: 'Completado'
     },
     {
-      id: 2,
+      id: '2',
       date: new Date(2020, 4, 2, 12, 38, 37),
       products: ['Pan de ajo', 'Pizza Opera', 'Pizza Casera'],
       price: 24.54,
@@ -26,7 +27,7 @@ export class OrdersService {
       estado: 'Completado'
     },
     {
-      id: 3,
+      id: '3',
       date: new Date(2020, 4, 8, 11, 15, 13),
       products: ['Ensalada', 'Pizza Opera', 'Batido de Fresa', 'Coca Cola'],
       price: 25.43,
@@ -35,7 +36,7 @@ export class OrdersService {
       estado: 'Cancelado'
     },
     {
-      id: 4,
+      id: '4',
       date: new Date(2020, 4, 8, 13, 5, 0),
       products: ['Pizza', 'Pizza Casera', 'Pizza Opera'],
       price: 37.95,
@@ -44,7 +45,7 @@ export class OrdersService {
       estado: 'Sin repartir'
     },
     {
-      id: 5,
+      id: '5',
       date: new Date(2020, 4, 8, 13, 5, 0),
       products: ['Pizza', 'Pizza Casera', 'Pizza Opera'],
       price: 37.95,
@@ -53,7 +54,7 @@ export class OrdersService {
       estado: 'Cancelado'
     },
     {
-      id: 6,
+      id: '6',
       date: new Date(2020, 4, 10, 15, 10, 7),
       products: ['Pizza', 'Pan de Ajo', 'Pizza Casera', 'Batido de Fresa', 'Papas Fritas'],
       price: 37.08,
@@ -62,7 +63,7 @@ export class OrdersService {
       estado: 'Pendiente de Pago'
     },
     {
-      id: 7,
+      id: '7',
       date: new Date(2020, 4, 10, 15, 10, 7),
       products: ['Pizza', 'Pan de Ajo', 'Pizza Casera', 'Batido de Fresa', 'Papas Fritas'],
       price: 37.08,
@@ -86,5 +87,9 @@ export class OrdersService {
     };
   }*/
 
-  deleteOrder() {}
+  deleteOrder(orderId: string) {
+    this.orders = this.orders.filter(order => {
+      return order.id !== orderId;
+    });
+  }
 }

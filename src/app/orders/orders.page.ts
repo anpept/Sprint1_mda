@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Order} from '../models/order.model';
+import {OrdersService} from './orders.service';
+import {AlertController} from '@ionic/angular';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,50 +12,40 @@ import {Order} from '../models/order.model';
 })
 export class OrdersPage implements OnInit {
 
+  orders = [];
+
+  constructor(private ordersService: OrdersService,
+              private router: Router,
+              private alertCtrl: AlertController) {}
 
 
-  constructor() {}
+    ngOnInit() {
+      this.orders = this.ordersService.getOrders();
+    }
 
-
-    ngOnInit() {}
+    async deleteOrder(orderId) {
+      const alertElement = await this.alertCtrl.create({
+        header: 'Are you sure, you want to delete it?',
+        message: 'Be careful',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'botones',
+          },
+          {
+            text: 'Confirm',
+            cssClass: 'boton_cancel',
+            handler: () => {
+              this.ordersService.deleteOrder(orderId);
+              this.orders = this.ordersService.getOrders();
+              console.log(this.orders);
+            }
+          }
+        ],
+        cssClass: 'alerta',
+      });
+      await alertElement.present();
+    }
 
 }
-
-  /*logout() {
-    this.afAuth.signOut().then(() => {
-      this.navCtrl.navigateRoot('login');
-    });
-  }
-  async getProducts() {
-    // show loader
-    const loader = this.loadingCtrl.create({
-      message: 'Please wait...'
-    });
-    (await loader).present();
-
-    try {
-      this.firestore.collection('products').snapshotChanges().subscribe(data => {
-        this.products = data.map(e => {
-          return {
-            id: e.payload.doc.id,
-            name: e.payload.doc.data()['name'],
-            type: e.payload.doc.data()['type'],
-            price: e.payload.doc.data()['price'],
-            imageURL: e.payload.doc.data()['imageURL']
-          };
-        });
-      });
-
-      // dismiss loader
-      (await loader).dismiss();
-    } catch (e) {
-      this.showToast(e);
-    }
-  }
-
-  showToast(message: string) {
-    this.toastCtrl.create({
-      message,
-      duration: 3000
-    }).then(toastData => toastData.present());
-  }*/
