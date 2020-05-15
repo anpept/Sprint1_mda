@@ -12,7 +12,7 @@
   <ion-list color="fondo" class="ion-no-padding">
     <ion-item *ngFor="let order of orders" color="fondo">
       <ion-label>
-        <p>Order Date: {{ order.date | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+        <p>Order Date: {{ order.date.seconds * 1000 | date:'dd/MM/yyyy HH:mm:ss'}}</p>
         <p>Products:</p>
         <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product}}</p>
         <p>Price: {{order.price}}€</p>

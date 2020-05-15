@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Order} from '../models/order.model';
-import {OrdersService} from './orders.service';
-import {AlertController} from '@ionic/angular';
+import { Component } from '@angular/core';
+import {AlertController, LoadingController, ToastController} from '@ionic/angular';
 import {Router} from "@angular/router";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 
 @Component({
@@ -10,20 +9,56 @@ import {Router} from "@angular/router";
   templateUrl: './orders.page.html',
   styleUrls: ['./orders.page.scss'],
 })
-export class OrdersPage implements OnInit {
+export class OrdersPage {
 
-  orders = [];
+  orders: any;
 
-  constructor(private ordersService: OrdersService,
-              private router: Router,
+  constructor(private router: Router,
+              private loadingCtrl: LoadingController,
+              private toastCtrl: ToastController,
+              private firestore: AngularFirestore,
               private alertCtrl: AlertController) {}
 
-
-    ngOnInit() {
-      this.orders = this.ordersService.getOrders();
+    ionViewWillEnter() {
+      this.getFireOrders();
     }
 
-    async deleteOrder(orderId) {
+ async getFireOrders() {
+    let loader = this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    (await loader).present();
+
+    try {
+      this.firestore.collection('orders').snapshotChanges().subscribe(data => {
+        this.orders = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            date: e.payload.doc.data()["date"],
+            products: e.payload.doc.data()["products"],
+            price: e.payload.doc.data()["price"],
+            user: e.payload.doc.data()["user"],
+            address: e.payload.doc.data()["address"],
+            estado: e.payload.doc.data()["estado"]
+          };
+        });
+      });
+
+      (await loader).dismiss();
+    } catch (e) {
+      this.showToast(e);
+    }
+  }
+
+  showToast(message: string) {
+    this.toastCtrl.create({
+      message,
+      duration: 3000
+    }).then(toastData => toastData.present());
+  }
+
+
+    async deleteOrder(orderId: string) {
       const alertElement = await this.alertCtrl.create({
         header: 'Are you sure, you want to delete it?',
         message: 'Be careful',
@@ -37,15 +72,22 @@ export class OrdersPage implements OnInit {
             text: 'Confirm',
             cssClass: 'boton_cancel',
             handler: () => {
-              this.ordersService.deleteOrder(orderId);
-              this.orders = this.ordersService.getOrders();
-              console.log(this.orders);
+              this.removeFireOrder(orderId);
             }
           }
         ],
         cssClass: 'alerta',
       });
       await alertElement.present();
+    }
+
+    async removeFireOrder(id: string){
+      let loader = this.loadingCtrl.create({
+        message: "Please Wait..."
+      });
+      (await loader).present();
+      await this.firestore.doc("orders/" + id).delete();
+      (await loader).dismiss();
     }
 
 }
