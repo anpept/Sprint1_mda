@@ -34,21 +34,15 @@ const routes: Routes = [
   {
     path: 'edit-product/:id',
     loadChildren: () => import('./edit-product/edit-product.module').then( m => m.EditProductPageModule)
-  },  {
+  },
+  {
     path: 'admin-panel',
     loadChildren: () => import('./admin-panel/admin-panel.module').then( m => m.AdminPanelPageModule)
   },
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
-  },
-  {
-    path: 'auxorder',
-    loadChildren: () => import('./auxorder/auxorder.module').then( m => m.AuxorderPageModule)
-  },
-
-
-
+  }
 ];
 @NgModule({
   imports: [
