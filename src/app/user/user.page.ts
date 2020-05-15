@@ -30,13 +30,7 @@ export class UserPage implements OnInit {
       
   }
   addToCart(i){
-    var pro =this.carro.getProducts();
-    var can =this.carro.getCantidades();
-    pro.push(i);
-    can.push(1);
-    this.carro.setProducts(pro);
-    this.carro.setCantidades(can);
-    console.log(this.carro.getProducts());
-    console.log(this.carro.getCantidades());
+    console.log(this.carro.addProduct(i));
+    
   }
 }

@@ -18,9 +18,7 @@ import { CarroPage } from './carro.page';
         component: CarroPage
       }
     ])
-  ],providers: [
-    CarroService
-  ],
+  ],providers: [CarroService],
   declarations: [CarroPage]
 })
 export class CarroPageModule {}
