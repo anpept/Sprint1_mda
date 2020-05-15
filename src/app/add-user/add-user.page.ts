@@ -34,11 +34,7 @@ export class AddUserPage implements OnInit {
           console.log(data);
           this.firestore.collection('users').doc(data.user.uid).set(user);
           // redirect to home page
-          if(user.category=="cliente"){
-            this.navCtrl.navigateRoot('user/?id='+data.user.uid);
-          }else{
-            this.navCtrl.navigateRoot('home');
-          }
+          this.navCtrl.navigateRoot('user/?id='+data.user.uid);
         });
       } catch (e) {
           this.showToast(e);
@@ -72,14 +68,14 @@ export class AddUserPage implements OnInit {
       this.showToast('Enter surname');
       return false;
     }
-    if (!this.user.type) {
+    /*if (!this.user.type) {
       this.showToast('Enter type');
       return false;
     }
     if (!this.user.category) {
       this.showToast('Enter category');
       return false;
-    }
+    }*/
     if (!this.user.other_data) {
       this.showToast('Enter other data');
       return false;
