@@ -5,14 +5,13 @@
   color: grey;
 }
 
-.cart {
-  position: absolute;
-  color: white;
-  right: 2em;
-  font-size: 1.3em;
-}
-
 .title {
   text-align: center;
 }
 
+ion-card{
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  margin: 0 !important;
+}
