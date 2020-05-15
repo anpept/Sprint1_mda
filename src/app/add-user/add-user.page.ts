@@ -32,6 +32,7 @@ export class AddUserPage implements OnInit {
         
         await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data => {
           console.log(data);
+          this.user.type="cliente";
           this.firestore.collection('users').doc(data.user.uid).set(user);
           // redirect to home page
           this.navCtrl.navigateRoot('user/?id='+data.user.uid);
@@ -44,7 +45,7 @@ export class AddUserPage implements OnInit {
       (await loader).dismiss();
 
         // redirect to home page
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('user');
     }
   }
 
