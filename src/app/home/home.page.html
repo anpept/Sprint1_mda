@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="cabecera">
-    <ion-title>MPD Admin Section</ion-title>
-    <ion-button class="logout" (click)="logout()">Log out</ion-button>
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/admin-panel'"></ion-icon>
+      MPD Admin Products</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" color="fondo">
@@ -35,5 +38,8 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/admin-panel'">
+    Back
+  </ion-button>
 </ion-content>
 
