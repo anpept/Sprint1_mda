@@ -3,6 +3,7 @@ import {User} from "../models/user.model";
 import {ActivatedRoute} from "@angular/router";
 import {LoadingController, NavController, ToastController} from "@ionic/angular";
 import {AngularFirestore} from "@angular/fire/firestore";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +18,8 @@ export class EditUserPage implements OnInit {
               private loadingCtrl: LoadingController,
               private firestore: AngularFirestore,
               private toastCtrl: ToastController,
-              private navCtrl: NavController) {
+              private navCtrl: NavController,
+              private router: Router) {
     this.id = this.actRoute.snapshot.paramMap.get("id");
   }
 
@@ -60,7 +62,12 @@ export class EditUserPage implements OnInit {
       (await loader).dismiss();
 
       // redirect to home page
-      this.navCtrl.navigateRoot('user');
+      let navigationExtras = {
+        queryParams: {
+          "id": this.id
+        }
+      };
+      this.router.navigate(['user'], navigationExtras);
     }
   }
 
