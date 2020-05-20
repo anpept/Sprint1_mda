@@ -3,6 +3,7 @@ import {LoadingController, ToastController, NavController} from '@ionic/angular'
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomePage {
       private toastCtrl: ToastController,
       private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
-      public navCtrl: NavController) {}
+      public navCtrl: NavController,
+      public alertController: AlertController) {}
 
   ionViewWillEnter() {
     this.getProducts();
@@ -30,6 +32,21 @@ export class HomePage {
       this.navCtrl.navigateRoot('login');
     });
   }
+<<<<<<< HEAD
+=======
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Confirmar proceso',
+      message: '¿Desea eliminar este producto?',
+      buttons: ['Aceptar', 'Cancelar']
+    });
+
+    await alert.present();
+  }
+  
+>>>>>>> visualizar_2
   async getProducts() {
     // show loader
     const loader = this.loadingCtrl.create({

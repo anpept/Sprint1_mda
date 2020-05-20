@@ -50,59 +50,15 @@
       <ion-button fill="outline" slot="end">View</ion-button>
     </ion-item>
   </ion-card>
-  <ion-card>
+  <ion-card *ngFor="let product of products">
     <ion-card-header>
-      <ion-card-title>Pizza Margarita</ion-card-title>
+      <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content>
-      <p>Precio: 12 €</p>
-      <p>tipo: comida</p>
-    </ion-card-content>
-    <ion-item>
-      <ion-button>
-        <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Pizza Carbonara</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <p>Precio: 14 €</p>
-      <p>tipo: comida</p>
-    </ion-card-content>
-    <ion-item>
-      <ion-button>
-        <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Pizza Cuatro Quesos</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <p>Precio: 15 €</p>
-      <p>tipo: comida</p>
-    </ion-card-content>
-    <ion-item>
-      <ion-button>
-        <ion-icon name="cart-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Pizza Vegetariana</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <p>Precio: 12 €</p>
-      <p>tipo: comida</p>
+    <ion-card-content >
+      <p>Precio: {{product.price}}</p>
+      <p>tipo: {{product.type}}</p>
+      <p>esto: {{product.imgageURL}}</p>
     </ion-card-content>
     <ion-item>
       <ion-button (click)='addToCart({price:6,name:"coca cola8"})'>
