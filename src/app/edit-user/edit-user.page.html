@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar color="cabecera">
     <ion-title class="ion-text-center">Edit User</ion-title>
+    <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -23,21 +24,6 @@
   <ion-item color="fondo">
     <ion-label position="floating">Surname</ion-label>
     <ion-input type="text" [(ngModel)]="user.surname" required=""></ion-input>
-  </ion-item>
-
-  <ion-item color="fondo">
-    <ion-label position="floating">Type</ion-label>
-    <ion-input type="text" [(ngModel)]="user.type" required=""></ion-input>
-  </ion-item>
-
-  <ion-item color="fondo">
-    <ion-label position="floating">Category</ion-label>
-    <ion-input type="text" [(ngModel)]="user.category" required=""></ion-input>
-  </ion-item>
-
-  <ion-item color="fondo">
-    <ion-label position="floating">Other data</ion-label>
-    <ion-input type="text" [(ngModel)]="user.other_data" required=""></ion-input>
   </ion-item>
 
   <ion-button class="ion-padding" color="secundario" expand="full" (click)="updateUser(user)">

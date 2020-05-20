@@ -24,3 +24,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.alerta{
+  --background: #001722 !important;
+  --ion-text-color: white;
+  --ion-color-step-550: #d7ffec;
+}
+.botones{
+  --ion-color-primary: #1acac0;
+}
+.boton_cancel{
+  --ion-color-primary: #ca595c;
+}

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './user-routing.module';
-import { CarroService } from '../carro/carro.service';
-import { UserPage } from './user.page';
+import { EditProductPageRoutingModule } from './edit-product-routing.module';
+
+import { EditProductPage } from './edit-product.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserPageRoutingModule
+    EditProductPageRoutingModule
   ],
-  providers:[CarroService],
-  declarations: [UserPage]
+  declarations: [EditProductPage]
 })
-export class UserPageModule {}
+export class EditProductPageModule {}

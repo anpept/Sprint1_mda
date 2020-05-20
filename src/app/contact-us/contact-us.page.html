@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <meta name="viewport" content="width=device-width" initial-sacle="1">
+    <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contact-section">
+
+    <h1>Contact Us</h1>
+    <div class="border"></div>
+    <form class="contact-form" action="" method="post">
+      <ion-input type="text" class="contact-form-text" placeholder="Your name" [(ngModel)]="contact.name" name="name"></ion-input>
+      <ion-input type="email" class="contact-form-text" placeholder="Your email" [(ngModel)]="contact.email" name="email"></ion-input>
+      <ion-input type="text" class="contact-form-text" placeholder="Your phone" [(ngModel)]="contact.phone" name="phone"></ion-input>
+      <ion-input type="text" class="contact-form-text" placeholder="Your message" [(ngModel)]="contact.message" name="message"></ion-input>
+      <input type="submit" class="contact-form-btn" value="Send" (click)="createContact(contact)">
+    </form>
+  </div>
+</ion-content>

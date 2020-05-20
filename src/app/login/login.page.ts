@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/user.model';
 import {LoadingController, NavController, ToastController} from '@ionic/angular';
+import { Router } from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
@@ -10,7 +11,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class LoginPage implements OnInit {
 user = {} as User;
-  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController, private afAuth: AngularFireAuth, private navCtrl: NavController) { }
+  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController, private afAuth: AngularFireAuth, private navCtrl: NavController,private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,16 +25,22 @@ user = {} as User;
       (await loader).present();
 
       try {
-        await this.afAuth.signInWithEmailAndPassword(user.email, user.password).then(data => {
+        let logging =await this.afAuth.signInWithEmailAndPassword(user.email, user.password).then(data => {
           console.log(data);
-
+          console.log(data.user.uid);
           // redirect to home page
           if (user.email === 'admin@admin.com' && user.password === '123456') {
-            this.navCtrl.navigateRoot('home');
+            this.navCtrl.navigateRoot('admin-panel');
           } else {
-            this.navCtrl.navigateRoot('user');
+            let navigationExtras = {
+              queryParams: {
+                id: data.user.uid
+              }
+            };
+            this.router.navigate(['user'], navigationExtras);
           }
         });
+        console.log(logging);
       } catch (e) {
         this.showToast(e);
       }

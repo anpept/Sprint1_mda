@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './user-routing.module';
-import { CarroService } from '../carro/carro.service';
-import { UserPage } from './user.page';
+import { SearchPageRoutingModule } from './search-routing.module';
+
+import { SearchPage } from './search.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserPageRoutingModule
+    SearchPageRoutingModule
   ],
-  providers:[CarroService],
-  declarations: [UserPage]
+  declarations: [SearchPage]
 })
-export class UserPageModule {}
+export class SearchPageModule {}

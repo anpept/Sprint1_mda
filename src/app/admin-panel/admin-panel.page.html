@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title>MPD Admin Section</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="fondo" >
+
+  <ion-list color="fondo" class="ion-no-padding">
+    <ion-item color="fondo" [routerLink]="'/home'">
+      <ion-icon name="pizza" class="ion-padding"></ion-icon>Administrar Productos
+    </ion-item>
+    <ion-item color="fondo" [routerLink]="'/orders'">
+      <ion-icon name="receipt" class="ion-padding"></ion-icon>Administrar Pedidos
+    </ion-item>
+    <ion-item color="fondo" [routerLink]="'#'">
+      <ion-icon name="people" class="ion-padding"></ion-icon>Administrar Usuarios
+    </ion-item>
+  </ion-list>
+
+</ion-content>

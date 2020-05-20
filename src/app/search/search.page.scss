@@ -1,0 +1,17 @@
+.home {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  color: grey;
+}
+
+.title {
+  text-align: center;
+}
+
+ion-card{
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  margin: 0 !important;
+}

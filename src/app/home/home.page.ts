@@ -26,12 +26,12 @@ export class HomePage {
   }
 
   // logout
+
   logout() {
     this.afAuth.signOut().then(() => {
       this.navCtrl.navigateRoot('login');
     });
   }
-
   async presentAlert(id: string) {
     const alert = await this.alertController.create({
       header: 'Aviso',
@@ -68,7 +68,6 @@ export class HomePage {
     (await loader).dismiss();
     console.log(id);
   }
-
   async getProducts() {
     // show loader
     const loader = this.loadingCtrl.create({
@@ -84,6 +83,7 @@ export class HomePage {
             name: e.payload.doc.data()['name'],
             type: e.payload.doc.data()['type'],
             price: e.payload.doc.data()['price'],
+            imageURL: e.payload.doc.data()['imageURL']
           };
         });
       });
