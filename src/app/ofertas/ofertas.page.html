@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/admin-panel'"></ion-icon>
+      Ofertas</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="fondo">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="'/add-oferta'" color="secundario">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
+</ion-content>

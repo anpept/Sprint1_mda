@@ -49,6 +49,14 @@ const routes: Routes = [
   {
     path: 'contact-us',
     loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'ofertas',
+    loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
+  },
+  {
+    path: 'add-oferta',
+    loadChildren: () => import('./add-oferta/add-oferta.module').then( m => m.AddOfertaPageModule)
   }
 
 ];

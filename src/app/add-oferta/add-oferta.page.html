@@ -1,0 +1,44 @@
+<ion-header>
+<ion-toolbar color="cabecera">
+  <ion-title class="ion-text-center">Add Oferta</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content color="fondo">
+  <ion-item color="fondo">
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="text" [(ngModel)]="oferta.name" required=""></ion-input>
+  </ion-item>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Type</ion-label>
+    <ion-input type="text" [(ngModel)]="oferta.type" required=""></ion-input>
+  </ion-item>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Price</ion-label>
+    <ion-input type="text" [(ngModel)]="oferta.price" required=""></ion-input>
+  </ion-item>
+  <ion-item color="fondo">
+    <ion-label position="floating">Discount</ion-label>
+    <ion-input type="text" [(ngModel)]="oferta.desc" required=""></ion-input>
+  </ion-item>
+  <ion-item color="fondo">
+    <ion-label position="floating">Final Price</ion-label>
+    <ion-input type="text" [(ngModel)]="oferta.final_price" required=""></ion-input>
+  </ion-item>
+  <ion-item color="fondo" class="hidden">
+    <input #fileUpload id="fileUpload" type="file" accept=".jpg" (change)="onUpload($event)">
+    <ion-input type="text" class="hidden" [value]="urlImage | async" [(ngModel)]="oferta.imageURL"></ion-input>
+  </ion-item>
+  <ion-button class="ion-padding" color="cabecera" expand="full" (click)="fileUpload.click()">
+    Upload Image
+  </ion-button>
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="createOferta(oferta)">
+    Create
+  </ion-button>
+  <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/ofertas'">
+    Cancel
+  </ion-button>
+</ion-content>
+
