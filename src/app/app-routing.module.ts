@@ -49,6 +49,14 @@ const routes: Routes = [
   {
     path: 'contact-us',
     loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'orders-page',
+    loadChildren: () => import('./orders-page/orders-page.module').then( m => m.OrdersPagePageModule)
+  },
+  {
+    path: 'filter',
+    loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
   }
 
 ];
