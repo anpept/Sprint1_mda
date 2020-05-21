@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
@@ -55,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./orders-page/orders-page.module').then( m => m.OrdersPagePageModule)
   },
   {
-    path: 'filter',
+    path: 'filter/:filter',
     loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
   }
 

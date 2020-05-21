@@ -1,9 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>filter</ion-title>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/orders-page'"></ion-icon>
+      Pedidos: {{filtro}}</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ <p>Se muestra el contenido por: {{filtro}}</p>
 
+  <ion-button color="cabecera" expand="full" [routerLink]="'/orders-page'">
+    Back
+  </ion-button>
 </ion-content>
