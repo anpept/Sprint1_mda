@@ -48,6 +48,18 @@
       <ion-button fill="outline" slot="end">View</ion-button>
     </ion-item>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Promociones</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+    </ion-card-content>
+    <ion-item>
+    </ion-item>
+  </ion-card>
+
   <ion-card *ngFor="let product of products">
     <ion-card-header>
       <ion-card-title>{{product.name}}</ion-card-title>
@@ -56,7 +68,9 @@
     <ion-card-content >
       <p>Precio: {{product.price}}</p>
       <p>tipo: {{product.type}}</p>
-      <p>esto: {{product.imgageURL}}</p>
+      <ion-avatar slot="start">
+          <ion-img [src]="product.imageURL"></ion-img>
+        </ion-avatar>
     </ion-card-content>
     <ion-item>
       <ion-button (click)='addToCart({price:6,name:"coca cola8"})'>

@@ -87,11 +87,11 @@ export class EditUserPage implements OnInit {
       return false;
     }
 
-    if (!this.user.type) {
+    /*if (!this.user.type) {
       this.showToast('Enter type');
       return false;
     }
-    return true;
+    return true;*/
   }
 
   showToast(message: string) {
