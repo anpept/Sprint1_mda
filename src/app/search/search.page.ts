@@ -11,6 +11,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class SearchPage implements OnInit {
   public productList: any[];
   public loadedProductList: any[];
+  public listado=[];
   constructor(private firestore: AngularFirestore, public afAuth: AngularFireAuth, public navCtrl: NavController,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController) { }
@@ -40,6 +41,24 @@ export class SearchPage implements OnInit {
         return false;
       }
     });
+  }
+  categorizar(input:String){
+    if(this.listado.includes(input)){
+      this.listado = this.listado.filter(function(value, index, arr){ return value != input;});
+    }else{
+      this.listado.push(input);
+    }
+    if(this.listado.length==0){
+      this.productList=this.loadedProductList;
+      return;
+    }
+    var res=[];
+    for(var product of this.loadedProductList){
+      if(this.listado.includes(product.type)){
+        res.push(product);
+      }
+    }
+    this.productList=res;
   }
 
 }
