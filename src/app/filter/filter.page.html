@@ -1,17 +1,32 @@
 <ion-header>
-  <ion-toolbar color="cabecera">
-    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/orders-page'"></ion-icon>
-      Pedidos: {{filtro}}</ion-title>
-    <ion-button color="secundario" class="logout" (click)="logout()">
-      <ion-icon name="log-out-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+    <ion-toolbar color="cabecera">
+        <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/orders-page'"></ion-icon>
+            Pedidos: {{filtro}}</ion-title>
+        <ion-button color="secundario" class="logout" (click)="logout()">
+            <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
- <p>Se muestra el contenido por: {{filtro}}</p>
-
-  <ion-button color="cabecera" expand="full" [routerLink]="'/orders-page'">
-    Back
-  </ion-button>
+<ion-content color="fondo">
+    <ion-list *ngFor="let order of orders" color="fondo" class="ion-no-padding">
+        <ion-item *ngIf="order.estado == filtro" color="fondo">
+            <ion-label >
+                <p>Order Date: {{ order.date.seconds * 1000 | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+                <p>Products:</p>
+                <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product}}</p>
+                <p>Price: {{order.price}}€</p>
+                <p>User: {{order.user}}</p>
+                <p>Address: {{order.address}}</p>
+                <p>State: {{order.estado}}</p>
+                <ion-button *ngIf="order.estado === 'Cancelado'" class="ion-float-end iconSize20" color="danger"
+                            (click)="deleteOrder(order.id)">
+                    <ion-icon class="iconSize20"  name="trash"></ion-icon>
+                </ion-button>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-button color="cabecera" expand="full" [routerLink]="'/orders-page'">
+        Back
+    </ion-button>
 </ion-content>

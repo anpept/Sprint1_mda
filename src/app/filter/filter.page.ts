@@ -1,27 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AlertController, LoadingController, ToastController} from "@ionic/angular";
+import {AlertController, LoadingController, NavController, ToastController} from "@ionic/angular";
 import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFireAuth} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.page.html',
   styleUrls: ['./filter.page.scss'],
 })
-export class FilterPage implements OnInit {
+export class FilterPage {
 
   filtro: any;
+  orders: any;
 
   constructor(private actRoute: ActivatedRoute,
               private router: Router,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               private firestore: AngularFirestore,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              public afAuth: AngularFireAuth,
+              public navCtrl: NavController) {
+
     this.filtro = this.actRoute.snapshot.paramMap.get('filter');
+
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.getFireOrders();
+  }
+
+  logout() {
+    this.afAuth.signOut().then(() => {
+      this.navCtrl.navigateRoot('login');
+    });
   }
 
   async getFireOrders() {
@@ -57,6 +70,7 @@ export class FilterPage implements OnInit {
       duration: 3000
     }).then(toastData => toastData.present());
   }
+
 
   async deleteOrder(orderId: string) {
     const alertElement = await this.alertCtrl.create({
