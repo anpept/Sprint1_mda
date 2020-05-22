@@ -14,4 +14,34 @@
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
   </ion-fab>
+  <ion-list lines="yes" color="fondo" class="ion-no-padding">
+    <ion-item-sliding *ngFor="let oferta of ofertas">
+      <ion-item class="no-padding" color="fondo">
+        <ion-avatar slot="start">
+          <ion-img [src]="oferta.imageURL"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <p>Name: {{oferta.name}}</p>
+          <p>Type: {{oferta.type}}</p>
+          <p>Price: {{oferta.price}}€</p>
+          <p>Discount: {{oferta.desc}}</p>
+          <p>Final Price: {{oferta.final_price}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="secundario" [routerLink]="['/edit-product/',oferta.id]">
+          <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="presentAlert(oferta.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-button class="ion-padding" color="cabecera" expand="full" [routerLink]="'/admin-panel'">
+    Back
+  </ion-button>
 </ion-content>

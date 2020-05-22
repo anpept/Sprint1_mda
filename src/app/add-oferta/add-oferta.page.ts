@@ -44,7 +44,7 @@ oferta = {} as Oferta;
       (await loader).dismiss();
 
       // redirect to home page
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('ofertas');
     }
   }
 
