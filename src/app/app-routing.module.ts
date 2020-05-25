@@ -57,6 +57,10 @@ const routes: Routes = [
   {
     path: 'add-oferta',
     loadChildren: () => import('./add-oferta/add-oferta.module').then( m => m.AddOfertaPageModule)
+  },
+  {
+    path: 'banner-ofertas',
+    loadChildren: () => import('./banner-ofertas/banner-ofertas.module').then( m => m.BannerOfertasPageModule)
   }
 
 ];

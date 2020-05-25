@@ -31,6 +31,12 @@
           Shopping Cart
         </ion-label>
       </ion-item>
+      <ion-item [routerLink]="'/banner-ofertas'">
+        <ion-icon name="logo-euro" slot="start"></ion-icon>
+        <ion-label>
+          Ofertas
+        </ion-label>
+      </ion-item>
     </ion-list>
   </ion-menu-toggle>
   <ion-card>
@@ -52,7 +58,7 @@
     <ion-card-header>
       <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card-header>
-
+    <ion-img [src]="product.imageURL"></ion-img>
     <ion-card-content >
       <p>Precio: {{product.price}}</p>
       <p>tipo: {{product.type}}</p>

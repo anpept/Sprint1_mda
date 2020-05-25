@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Ofertas</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+    <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid *ngFor="let oferta of ofertas">
+  <ion-row>
+    <ion-col size="12">
+     <ion-card>
+       <ion-card-header>
+       <ion-img [src]="oferta.imageURL"></ion-img>
+       <ion-card-title>{{oferta.name}}</ion-card-title>
+        <ion-card-content>
+          <p>Type {{oferta.type}}</p>
+          <p>Price {{oferta.price}}</p>
+          <p class="descuento">Descuento {{oferta.desc}}</p>
+          <p>Final price {{oferta.final_price}}</p>
+          <p><ion-button color="primary">Add to Cart</ion-button></p>
+        </ion-card-content>
+       </ion-card-header>
+     </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
