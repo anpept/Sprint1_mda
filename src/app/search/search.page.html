@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar showCancelButton (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-searchbar showCancelButton [(ngModel)]="searchItem" (ionChange)="busqueda()"></ion-searchbar>
   <ion-list>
     <ion-item >
       <ion-label>Bebida</ion-label>
