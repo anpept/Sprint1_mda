@@ -27,6 +27,12 @@ export class UserPage implements OnInit {
   ngOnInit() {
   }
 
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
+
   ionViewWillEnter() {
     this.getProducts();
   }
