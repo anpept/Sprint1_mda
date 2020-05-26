@@ -28,7 +28,6 @@ ofertas: any;
       this.navCtrl.navigateRoot('login');
     });
   }
-
   async getOfertas() {
     // show loader
     const loader = this.loadingCtrl.create({

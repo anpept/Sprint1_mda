@@ -27,7 +27,7 @@
 
   <ion-item color="fondo" class="hidden">
     <input #fileUpload id="fileUpload" type="file" accept=".jpg" (change)="onUpload($event)">
-    <ion-input type="text" [value]="urlImage | async" [(ngModel)]="product.imageURL"></ion-input>
+    <ion-input type="text" class="hidden" [value]="urlImage | async" [(ngModel)]="product.imageURL"></ion-input>
   </ion-item>
   <ion-button class="ion-padding" color="cabecera" expand="full" (click)="fileUpload.click()">
     Upload Image

@@ -13,6 +13,8 @@ import * as firebase from 'firebase';
 })
 export class BannerOfertasPage implements OnInit {
 ofertas: any;
+public productList: any[];
+public loadedProductList: any[];
   constructor(private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               private firestore: AngularFirestore,
@@ -20,7 +22,32 @@ ofertas: any;
               public navCtrl: NavController,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.firestore.collection('ofertas').valueChanges().subscribe(productList => {
+      this.productList = productList;
+      this.loadedProductList = productList;
+    });
+  }
+
+  initializeItems(): void {
+    this.productList = this.loadedProductList;
+  }
+
+  filterList(event) {
+    this.initializeItems();
+    const searchTerm = event.srcElement.value;
+    if (!searchTerm) {
+      return;
+    }
+    this.productList = this.productList.filter(currentProduct => {
+      if (currentProduct.name && searchTerm) {
+        if (currentProduct.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
 
   logout() {
     this.afAuth.signOut().then(() => {

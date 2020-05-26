@@ -9,7 +9,8 @@
 </ion-header>
 
 <ion-content>
-<ion-grid *ngFor="let oferta of ofertas">
+  <ion-searchbar showCancelButton (ionInput)="filterList($event)"></ion-searchbar>
+<ion-grid *ngFor="let oferta of productList">
   <ion-row>
     <ion-col size="12">
      <ion-card>
