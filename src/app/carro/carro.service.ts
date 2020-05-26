@@ -28,5 +28,6 @@ export class CarroService {
     }
     setCantidades(cantidad){
         this.cantidades=cantidad;
+        
     }
 }
