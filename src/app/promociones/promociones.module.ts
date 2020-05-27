@@ -4,20 +4,17 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { PromocionesPageRoutingModule } from './promociones-routing.module';
 import { PromocionesPage } from './promociones.page';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
+    PromocionesPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [PromocionesPage]
 })
 export class PromocionesPageModule {}

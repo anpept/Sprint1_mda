@@ -6,13 +6,13 @@ import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-promocion',
-  templateUrl: 'promocion.page.html',
-  styleUrls: ['promocion.page.scss'],
+  selector: 'app-promociones',
+  templateUrl: 'promociones.page.html',
+  styleUrls: ['promociones.page.scss'],
 })
-export class PromocionPage {
+export class PromocionesPage {
   users: any;
-  products: any;
+  promociones: any;
   constructor(
       private loadingCtrl: LoadingController,
       private toastCtrl: ToastController,
@@ -81,8 +81,7 @@ export class PromocionPage {
           return {
             id: e.payload.doc.id,
             name: e.payload.doc.data()['name'],
-            price: e.payload.doc.data()['price']/*,
-            imageURL: e.payload.doc.data()['imageURL']*/
+            precio: e.payload.doc.data()['precio']
           };
         });
       });

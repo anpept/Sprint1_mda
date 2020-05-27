@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" color="fondo">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button [routerLink]="'/add-product'" color="secundario">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -16,12 +16,12 @@
   <ion-list lines="none" color="fondo" class="ion-no-padding">
     <ion-item-sliding *ngFor="let promocion of promociones">
       <ion-item class="no-padding" color="fondo">
-        <ion-avatar slot="start">
+        <!--<ion-avatar slot="start">
           <ion-img [src]="promocion.imageURL"></ion-img>
-        </ion-avatar>
+        </ion-avatar>-->
         <ion-label>
-          <p>Name: {{promocion.name}}</p>
-          <p>Price: {{promocion.price}}€</p>
+          <p>Name: {{promociones.name}}</p>
+          <p>Price: {{promociones.precio}}€</p>
         </ion-label>
       </ion-item>
       <ion-item-options side="start">

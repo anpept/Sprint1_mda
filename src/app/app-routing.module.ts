@@ -42,13 +42,18 @@ const routes: Routes = [
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
   {
     path: 'contact-us',
     loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'promociones',
+    loadChildren: () => import('./promociones/promociones.module').then( m => m.PromocionesPageModule)
   }
 
 ];
