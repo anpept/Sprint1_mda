@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
@@ -63,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./banner-ofertas/banner-ofertas.module').then( m => m.BannerOfertasPageModule)
   },
   {
-    path: 'edit-oferta',
+    path: 'edit-oferta/:id',
     loadChildren: () => import('./edit-oferta/edit-oferta.module').then( m => m.EditOfertaPageModule)
   }
 

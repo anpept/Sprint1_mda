@@ -57,6 +57,43 @@ ofertas: any;
     }
   }
 
+  async presentAlert(id: string) {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      subHeader: 'Confirmar proceso',
+      message: '¿Desea eliminar este producto?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.deleteUser(id);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async deleteUser(id: string) {
+    //muestra el loader
+    let loader = this.loadingCtrl.create({
+      message: "Please wait..."
+    });
+    (await loader).present();
+
+    await this.firestore.doc('ofertas/' + id).delete();
+
+    (await loader).dismiss();
+    console.log(id);
+  }
+
   showToast(message: string) {
     this.toastCtrl.create({
       message,

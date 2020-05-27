@@ -21,7 +21,8 @@ export class EditOfertaPage implements OnInit {
               private firestore: AngularFirestore,
               private toastCtrl: ToastController,
               private navCtrl: NavController,
-              private storage: AngularFireStorage) {
+              private storage: AngularFireStorage
+  ) {
     this.id = this.actRoute.snapshot.paramMap.get('id');
   }
 
@@ -64,7 +65,7 @@ export class EditOfertaPage implements OnInit {
       (await loader).dismiss();
 
       // redirect to home page
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('ofertas');
     }
   }
   formValidation() {
