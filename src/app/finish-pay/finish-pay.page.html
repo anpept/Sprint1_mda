@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>finish-pay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>{{mensaje}}</h1>
+  <p>Order Date: {{ order.date | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+  <p>Products:</p>
+  <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</p>
+  <p>Price: {{order.price}}€</p>
+  <p>User: {{order.user}}</p>
+  <p>Address: {{order.address}}</p>
+  <!--<p>State: {{order.estado}}</p>-->
+</ion-content>

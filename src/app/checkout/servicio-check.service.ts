@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Order} from "../models/order.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioCheckService {
 
-  cliente: any;
+  order = {} as Order;
+  message: string;
+
   constructor() { }
 
-  setClient(id){
+  setOrder(pedido: Order){
+    this.order = pedido;
+  }
+  getOrder(){
+    return this.order;
+  }
+  setMessage(mensaje: string){
+    this.message = mensaje;
+  }
+  getMessage(){
+    return this.message;
+  }
 
-  }
-  getClient(){
-    //return cliente;
-  }
-  removeClient(){
-
-  }
 }
 

@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <h1>FECHA: {{date}}</h1>
   <p>{{cliente.email}}</p>
   <p>{{cliente.uid}}</p>
   <p>{{user.name}}</p>
@@ -12,6 +13,20 @@
   <p>{{user.other_data}}</p>
   <p>{{user.password}}</p>
   <h1>Compra: </h1>
+
+  <ion-item color="fondo">
+    <ion-label position="floating">Mensaje</ion-label>
+    <ion-input type="text" [(ngModel)]="mensaje" required=""></ion-input>
+  </ion-item>
+  <ion-item color="fondo">
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input type="text" [(ngModel)]="direccion" required=""></ion-input>
+  </ion-item>
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="setMensaje(mensaje)">
+    Create
+  </ion-button>
+
+  <div id="paypal-button-container"></div>
 
   <ion-button class="ion-padding" color="primary" expand="full" (click)="payWithPaypal()">
     PAY (with PayPal)

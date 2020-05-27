@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireStorageModule} from "@angular/fire/storage";
 import {PayPal} from '@ionic-native/paypal/ngx';
+import {CarroService} from "./carro/carro.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import {PayPal} from '@ionic-native/paypal/ngx';
     StatusBar,
     SplashScreen,
     PayPal,
+    CarroService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

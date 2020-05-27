@@ -29,4 +29,14 @@ export class CarroService {
     setCantidades(cantidad){
         this.cantidades=cantidad;
     }
+    getArrayProducts(){
+        return this.products;
+    }
+    getPrecio(){
+        var total=0;
+        for(let indice=0; indice<this.products.length; indice++){
+            total += this.cantidades[indice]*this.products[indice].price;
+        }
+        return total;
+    }
 }
