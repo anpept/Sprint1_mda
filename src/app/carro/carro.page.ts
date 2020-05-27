@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { CarroService } from './carro.service';
+import { CarroService } from '../carro.service';
 import * as firebase from 'firebase';
 
 @Component({
@@ -16,14 +16,14 @@ export class CarroPage {
   cantidades;
   total:number=0;
   constructor(
-      private loadingCtrl: LoadingController,
-      private toastCtrl: ToastController,
-      private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
       private carro: CarroService) {
       }
-
+      ngOnInit() {
+        this.products=this.carro.getProducts();
+        this.cantidades=this.carro.getCantidades();
+      }
   ionViewWillEnter() {
     
     this.products=this.carro.getProducts();
