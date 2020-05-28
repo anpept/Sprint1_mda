@@ -50,14 +50,14 @@
   </ion-card>
 
   <ion-slides [options]="sliderConfig">
-      <ion-slide *ngFor="let product of products">
+      <ion-slide *ngFor="let promocion of promociones">
           <ion-card>
             <ion-card-header>
               <ion-card-title>
-                {{ product.name }} - ${{ product.price }}
+                {{ promocion.name }} - ${{ promcion.price }}
               </ion-card-title>
               <ion-card-content>
-                <ion-img class= "imgpromo" [src]="product.imageURL"></ion-img>
+                <ion-img class= "imgpromo" [src]="promocion.imageURL"></ion-img>
                 <ion-button expand="full">Add to Cart</ion-button>
               </ion-card-content>
             </ion-card-header>

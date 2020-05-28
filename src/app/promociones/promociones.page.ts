@@ -22,7 +22,7 @@ export class PromocionesPage {
       public alertController: AlertController) {}
 
   ionViewWillEnter() {
-    this.getProducts();
+    this.getPromociones();
   }
 
   // logout
@@ -68,7 +68,7 @@ export class PromocionesPage {
     (await loader).dismiss();
     console.log(id);
   }
-  async getProducts() {
+  async getPromociones() {
     // show loader
     const loader = this.loadingCtrl.create({
       message: 'Please wait...'
@@ -81,7 +81,8 @@ export class PromocionesPage {
           return {
             id: e.payload.doc.id,
             name: e.payload.doc.data()['name'],
-            precio: e.payload.doc.data()['precio']
+            precio: e.payload.doc.data()['precio'],
+            imageURL: e.payload.doc.data()['imageURL'],
           };
         });
       });
