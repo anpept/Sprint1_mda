@@ -6,10 +6,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" color="fondo">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button [routerLink]="'/checkout'" color="secundario">Checkout
-    </ion-button>
-  </ion-fab>
   <ion-list lines="none" color="fondo" class="ion-no-padding">
     <ion-item-sliding *ngFor="let product of products; let i=index">
       <ion-item class="no-padding" color="fondo">
@@ -25,5 +21,13 @@
     </ion-item-sliding>
     <ion-item class="no-padding" color="fondo">Total price: {{total}}€</ion-item>
   </ion-list>
+  <p class="ion-padding-start ion-padding-end">Introduce la dirección a la que se enviará el pedido</p>
+  <ion-item color="cabecera">
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input type="text" [(ngModel)]="direccion" required=""></ion-input>
+  </ion-item>
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="goToCheckout()">
+    Checkout
+  </ion-button>
 </ion-content>
 

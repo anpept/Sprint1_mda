@@ -4,7 +4,6 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { CarroService } from '../carro/carro.service';
 import { ActivatedRoute } from '@angular/router';
-import * as firebase from 'firebase';
 
 
 @Component({
@@ -14,6 +13,7 @@ import * as firebase from 'firebase';
 })
 export class UserPage implements OnInit {
 
+  cliente: any;
   products: any;
   constructor(
     private loadingCtrl: LoadingController,

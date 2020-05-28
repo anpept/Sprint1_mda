@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 import {AngularFireModule} from "@angular/fire";
 import {User} from "../models/user.model";
-import {LoadingController, NavController} from "@ionic/angular";
+import {LoadingController, NavController, ToastController} from "@ionic/angular";
 import {AngularFirestore} from "@angular/fire/firestore";
 import { PayPal, PayPalPayment, PayPalConfiguration } from "@ionic-native/paypal/ngx";
 import {Order} from "../models/order.model";
@@ -23,9 +23,8 @@ export class CheckoutPage implements OnInit {
   cliente: any;
   mensaje: string;
   direccion: string;
-  date: Date;
 
-  paymentAmount: string = '5.25';
+  paymentAmount = '12';
   currency: string = 'EUR';
   currencyIcon: string = '€';
 
@@ -36,6 +35,7 @@ export class CheckoutPage implements OnInit {
               private servicioCheck: ServicioCheckService,
               private navCtrl: NavController,
               private carro: CarroService,
+              private toastCtrl: ToastController
               ) {
       let _this = this;
       setTimeout(() => {
@@ -59,10 +59,12 @@ export class CheckoutPage implements OnInit {
                       .then(function (details) {
                           console.log(details);
                           // Show a success message to the buyer
-                          alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                          //alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                          _this.setPedido("Completed", "Completado");
                       })
                       .catch(err => {
                           console.log(err);
+                          _this.setPedido("Error", "Cancelado");
                       })
               }
           }).render('#paypal-button-container');
@@ -70,14 +72,17 @@ export class CheckoutPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cliente = firebase.auth().currentUser;
+    //this.cliente = firebase.auth().currentUser; --> Sería lo correcto pero da muchos fallos.
+    //this.cliente = this.servicioCheck.getClientId();
+    this.cliente = 'FFG3a1BB6KelSirb435YUDTpNjP2';
     if (this.cliente != null){
-      this.getUserById(this.cliente.uid);
+      this.getUserById(this.cliente);
+      console.log("Si está aquí -> " + this.cliente);
     }else{
       console.log("No se han podido recuperar las credenciales");
     }
-    this.date = new Date();
-    console.log(this.date);
+    this.paymentAmount = this.carro.getPrecio().toString();
+    this.direccion = this.servicioCheck.getDireccion();
   }
 
   async getUserById(id: string){
@@ -98,7 +103,9 @@ export class CheckoutPage implements OnInit {
     (await loader).dismiss();
   }
 
-  payWithPaypal() {
+
+  //Esta versión sólo sirve para aplicaciones android nativas.
+  /*payWithPaypal() {
     console.log("Se procesa el pago correctamente");
     this.payPal.init({
       PayPalEnvironmentProduction: 'Aquí iría el ID de producción',
@@ -121,25 +128,53 @@ export class CheckoutPage implements OnInit {
     }, () => {
       //console.log("Error en la inicialización, paypal no esta disponible en este momento");
     });
-  }
+  }*/
 
-  setMensaje(mensaje){
-      this.makeOrder();
+  setPedido(mensaje: string, estado: string){
+      console.log("Funciona setpedido "+ mensaje + ' --> '+ estado);
+      this.makeOrder(estado);
       this.servicioCheck.setMessage(mensaje);
       this.servicioCheck.setOrder(this.order);
+      //this.createOrder(this.order);
+      console.log (this.servicioCheck.getMessage());
       this.navCtrl.navigateRoot('finish-pay');
   }
 
-  makeOrder(){
-      console.log("WEY SI ENTRO AQUÍ")
+ makeOrder(estado: string){
+      console.log("Funciona makeorder" + this.direccion);
       this.order.user = this.user.name + " " + this.user.surname;
       this.order.date = new Date();
       this.order.products = this.carro.getArrayProducts();
       this.order.price = this.carro.getPrecio();
       this.order.address = this.direccion;
+      this.order.estado = estado;
   }
 
+   async createOrder(order: Order) {
+        // show loader
+        const loader = this.loadingCtrl.create({
+            message: 'Please wait...'
+        });
+        (await loader).present();
+        try {
+        await this.firestore.collection('orders').add(order);
+        } catch (e) {
+            this.showToast(e);
+        }
+
+        // dismiss loader
+        (await loader).dismiss();
+
+        // redirect to finish-pay page
+        this.navCtrl.navigateRoot('finish-pay');
+    }
 
 
 
+    showToast(message: string) {
+        this.toastCtrl.create({
+            message,
+            duration: 3000
+        }).then(toastData => toastData.present());
+    }
 }

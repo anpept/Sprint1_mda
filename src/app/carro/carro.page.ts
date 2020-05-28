@@ -4,6 +4,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { CarroService } from './carro.service';
 import * as firebase from 'firebase';
+import {ServicioCheckService} from "../checkout/servicio-check.service";
 
 @Component({
   selector: 'app-home',
@@ -15,13 +16,16 @@ export class CarroPage {
   products;
   cantidades;
   total:number=0;
+  direccion: string;
+
   constructor(
       private loadingCtrl: LoadingController,
       private toastCtrl: ToastController,
       private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
-      private carro: CarroService) {
+      private carro: CarroService,
+      private servicioCheck: ServicioCheckService) {
       }
 
   ionViewWillEnter() {
@@ -64,5 +68,28 @@ export class CarroPage {
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
     this.carro.setProducts(this.products);
+  }
+
+  goToCheckout(){
+    if (this.addressValidator()){
+      console.log(this.direccion);
+      this.servicioCheck.setDireccion(this.direccion);
+      this.navCtrl.navigateRoot('checkout');
+    }
+  }
+
+  addressValidator() {
+    if (!this.direccion) {
+      this.showToast('Enter a shipping address');
+      return false;
+    }
+    return true;
+  }
+
+  showToast(message: string) {
+    this.toastCtrl.create({
+      message,
+      duration: 3000
+    }).then(toastData => toastData.present());
   }
 }

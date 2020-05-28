@@ -8,6 +8,8 @@ export class ServicioCheckService {
 
   order = {} as Order;
   message: string;
+  clientId: string;
+  direccion: string;
 
   constructor() { }
 
@@ -22,6 +24,18 @@ export class ServicioCheckService {
   }
   getMessage(){
     return this.message;
+  }
+  setClientId(id){
+    this.clientId = id;
+  }
+  getClientId(){
+    return this.clientId;
+  }
+  setDireccion(dir){
+    this.direccion = dir;
+  }
+  getDireccion(){
+    return this.direccion;
   }
 
 }

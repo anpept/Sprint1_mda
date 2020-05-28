@@ -1,36 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Checkout</ion-title>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/carro'"></ion-icon>
+      Checkout</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>FECHA: {{date}}</h1>
-  <p>{{cliente.email}}</p>
-  <p>{{cliente.uid}}</p>
-  <p>{{user.name}}</p>
-  <p>{{user.surname}}</p>
-  <p>{{user.other_data}}</p>
-  <p>{{user.password}}</p>
-  <h1>Compra: </h1>
+<ion-content class="ion-padding-start ion-margin-start" color="fondo">
 
-  <ion-item color="fondo">
-    <ion-label position="floating">Mensaje</ion-label>
-    <ion-input type="text" [(ngModel)]="mensaje" required=""></ion-input>
-  </ion-item>
+  <h4>{{user.name}} {{user.surname}} elija su forma de pago:</h4>
+  <h3>Total: {{paymentAmount}}</h3>
+  <p>Address: {{direccion}}</p>
+
   <ion-item color="fondo">
     <ion-label position="floating">Dirección</ion-label>
     <ion-input type="text" [(ngModel)]="direccion" required=""></ion-input>
   </ion-item>
-  <ion-button class="ion-padding" color="secundario" expand="full" (click)="setMensaje(mensaje)">
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="setPedido('Completado', 'Completado')">
     Create
   </ion-button>
 
-  <div id="paypal-button-container"></div>
-
-  <ion-button class="ion-padding" color="primary" expand="full" (click)="payWithPaypal()">
-    PAY (with PayPal)
-  </ion-button>
+  <div id="paypal-button-container" class="ion-padding-end"></div>
 
 
 </ion-content>
