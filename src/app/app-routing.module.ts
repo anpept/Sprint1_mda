@@ -28,6 +28,9 @@ const routes: Routes = [
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
   },{
+    path: 'add-promo',
+    loadChildren: () => import('./add-promo/add-promo.module').then( m => m.AddPromoPageModule)
+  },{
     path: 'carro',
     loadChildren: () => import('./carro/carro.module').then( m => m.CarroPageModule)
   },
@@ -42,7 +45,8 @@ const routes: Routes = [
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
