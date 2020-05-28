@@ -66,7 +66,11 @@ const routes: Routes = [
   {
     path: 'edit-oferta/:id',
     loadChildren: () => import('./edit-oferta/edit-oferta.module').then( m => m.EditOfertaPageModule)
+  },  {
+    path: 'find-us',
+    loadChildren: () => import('./find-us/find-us.module').then( m => m.FindUsPageModule)
   }
+
 
 ];
 @NgModule({
