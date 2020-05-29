@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/admin-panel'"></ion-icon>
+    Select a Filter</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="fondo" >
+
+  <ion-list color="fondo" class="ion-no-padding">
+    <ion-item color="fondo" [routerLink]="['/filter/', 'Completado']">
+      <ion-icon name="ellipse" class="ion-padding"></ion-icon>Orders Completed
+    </ion-item>
+    <ion-item color="fondo" [routerLink]="['/filter/', 'Cancelado']">
+      <ion-icon name="ellipse" class="ion-padding"></ion-icon>Orders Canceled
+    </ion-item>
+    <ion-item color="fondo" [routerLink]="['/filter/', 'Pendiente de Pago']">
+      <ion-icon name="ellipse" class="ion-padding"></ion-icon>Pending Orders
+    </ion-item>
+    <ion-item color="fondo" [routerLink]="'/orders'">
+      <ion-icon name="ellipse" class="ion-padding"></ion-icon>All Orders
+    </ion-item>
+  </ion-list>
+
+</ion-content>
