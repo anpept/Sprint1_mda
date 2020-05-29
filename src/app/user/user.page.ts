@@ -79,7 +79,7 @@ export class UserPage implements OnInit {
           return {
             id: e.payload.doc.id,
             name: e.payload.doc.data()['name'],
-            precio: e.payload.doc.data()['precio'],
+            precio: e.payload.doc.data()['price'],
             imageURL: e.payload.doc.data()['imageURL'],
           };
         });

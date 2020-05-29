@@ -47,7 +47,7 @@ export class PromocionesPage {
           {
             text: 'Aceptar',
             handler: () => {
-              this.deleteUser(id);
+              this.deletePromo(id);
             }
           }
       ]
@@ -56,7 +56,7 @@ export class PromocionesPage {
     await alert.present();
   }
 
-  async deleteUser(id: string) {
+  async deletePromo(id: string) {
     //muestra el loader
     let loader = this.loadingCtrl.create({
       message: "Please wait..."
@@ -81,8 +81,9 @@ export class PromocionesPage {
           return {
             id: e.payload.doc.id,
             name: e.payload.doc.data()['name'],
-            precio: e.payload.doc.data()['precio'],
+            price: e.payload.doc.data()['price'],
             imageURL: e.payload.doc.data()['imageURL'],
+            productos: e.payload.doc.data()['productos']
           };
         });
       });
