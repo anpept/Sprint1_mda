@@ -60,11 +60,11 @@ export class CheckoutPage implements OnInit {
                           console.log(details);
                           // Show a success message to the buyer
                           //alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                          _this.setPedido("Completed", "Completado");
+                          _this.setPedido("realizado con éxito", "Completado");
                       })
                       .catch(err => {
                           console.log(err);
-                          _this.setPedido("Error", "Cancelado");
+                          _this.setPedido("ha ocurrido un error", "Cancelado");
                       })
               }
           }).render('#paypal-button-container');
@@ -171,8 +171,6 @@ export class CheckoutPage implements OnInit {
         // redirect to finish-pay page
         this.navCtrl.navigateRoot('finish-pay');
     }
-
-
 
     showToast(message: string) {
         this.toastCtrl.create({
