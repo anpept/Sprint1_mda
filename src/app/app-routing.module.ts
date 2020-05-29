@@ -58,6 +58,14 @@ const routes: Routes = [
   {
     path: 'filter/:filter',
     loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'finish-pay',
+    loadChildren: () => import('./finish-pay/finish-pay.module').then( m => m.FinishPayPageModule)
   }
 
 ];

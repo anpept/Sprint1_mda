@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, merge, Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
+import {ToastController} from "@ionic/angular";
 
 @Injectable()
 export class CarroService {
 
     private products;
     private cantidades;
-    constructor() {
-        this.products = [{price:5,name:"coca cola"}];
-        this.cantidades = [1];
+    direccion: string;
+    precio: number;
+    constructor(private toastCtrl: ToastController) {
+        this.products = [{price:1.59,name:"Pan de Ajo"},{price:7.95,name:"Pizza Opera"},{price:1.99,name:"Coca Cola"}];
+        this.cantidades = [1,1,1];
     }
 
     getProducts():Observable<Array<any>>{
@@ -29,4 +32,14 @@ export class CarroService {
     setCantidades(cantidad){
         this.cantidades=cantidad;
     }
+    getArrayProducts(){
+        return this.products;
+    }
+    getPrecio(){
+        return this.precio;
+    }
+    setPrecio(price){
+        this.precio = price;
+    }
+
 }

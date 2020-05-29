@@ -3,6 +3,7 @@ import {User} from '../models/user.model';
 import {LoadingController, NavController, ToastController} from '@ionic/angular';
 import { Router } from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {ServicioCheckService} from "../checkout/servicio-check.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class LoginPage implements OnInit {
 user = {} as User;
-  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController, private afAuth: AngularFireAuth, private navCtrl: NavController,private router: Router) { }
+  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController, private afAuth: AngularFireAuth, private navCtrl: NavController,private router: Router,
+              private servicioCheck: ServicioCheckService) { }
 
   ngOnInit() {
   }
@@ -37,6 +39,7 @@ user = {} as User;
                 id: data.user.uid
               }
             };
+            this.servicioCheck.setClientId(data.user.uid);
             this.router.navigate(['user'], navigationExtras);
           }
         });
