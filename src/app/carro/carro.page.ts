@@ -46,12 +46,12 @@ export class CarroPage {
       total+=this.cantidades[indice]*this.products[indice].price;
     }
     this.total=total;
+    this.carro.setPrecio(this.total);
   }
   anadirCantidad(i:number){
     this.cantidades[i]++;
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
-    console.log(this.products);
   }
   restarCantidad(i:number){
     if(this.cantidades[i]==1){
@@ -74,7 +74,9 @@ export class CarroPage {
     if (this.addressValidator()){
       console.log(this.direccion);
       this.servicioCheck.setDireccion(this.direccion);
+      console.log(this.servicioCheck.getDireccion());
       this.navCtrl.navigateRoot('checkout');
+      this.servicioCheck.setPrecio(this.total.toFixed(2));
     }
   }
 

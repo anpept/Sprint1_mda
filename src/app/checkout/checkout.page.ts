@@ -81,9 +81,12 @@ export class CheckoutPage implements OnInit {
     }else{
       console.log("No se han podido recuperar las credenciales");
     }
-    this.paymentAmount = this.carro.getPrecio().toString();
-    this.direccion = this.servicioCheck.getDireccion();
+
   }
+    ionViewWillEnter() {
+      this.paymentAmount = this.servicioCheck.getPrecio();
+      this.direccion = this.servicioCheck.getDireccion();
+    }
 
   async getUserById(id: string){
     const loader = this.loadingCtrl.create({
@@ -135,7 +138,7 @@ export class CheckoutPage implements OnInit {
       this.makeOrder(estado);
       this.servicioCheck.setMessage(mensaje);
       this.servicioCheck.setOrder(this.order);
-      //this.createOrder(this.order);
+      this.createOrder(this.order);
       console.log (this.servicioCheck.getMessage());
       this.navCtrl.navigateRoot('finish-pay');
   }
@@ -145,7 +148,7 @@ export class CheckoutPage implements OnInit {
       this.order.user = this.user.name + " " + this.user.surname;
       this.order.date = new Date();
       this.order.products = this.carro.getArrayProducts();
-      this.order.price = this.carro.getPrecio();
+      this.order.price = parseFloat(this.paymentAmount);
       this.order.address = this.direccion;
       this.order.estado = estado;
   }

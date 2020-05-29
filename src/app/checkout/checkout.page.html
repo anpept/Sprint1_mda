@@ -10,19 +10,14 @@
 
 <ion-content class="ion-padding-start ion-margin-start" color="fondo">
 
-  <h4>{{user.name}} {{user.surname}} elija su forma de pago:</h4>
-  <h3>Total: {{paymentAmount}}</h3>
+  <h4>{{user.name}} {{user.surname}} elija su forma de pago</h4>
+  <h3>Total: {{paymentAmount}}€</h3>
   <p>Address: {{direccion}}</p>
 
-  <ion-item color="fondo">
-    <ion-label position="floating">Dirección</ion-label>
-    <ion-input type="text" [(ngModel)]="direccion" required=""></ion-input>
-  </ion-item>
-  <ion-button class="ion-padding" color="secundario" expand="full" (click)="setPedido('Completado', 'Completado')">
+  <!--<ion-button class="ion-padding" color="secundario" expand="full" (click)="setPedido('Completado', 'Completado')">
     Create
-  </ion-button>
+  </ion-button>-->
 
-  <div id="paypal-button-container" class="ion-padding-end"></div>
-
+  <div id="paypal-button-container" class="ion-text-center ion-padding-end"></div>
 
 </ion-content>

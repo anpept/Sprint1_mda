@@ -10,6 +10,7 @@ export class ServicioCheckService {
   message: string;
   clientId: string;
   direccion: string;
+  precio: string ='150';
 
   constructor() { }
 
@@ -36,6 +37,12 @@ export class ServicioCheckService {
   }
   getDireccion(){
     return this.direccion;
+  }
+  setPrecio(price){
+    this.precio=price;
+  }
+  getPrecio(){
+    return this.precio;
   }
 
 }
