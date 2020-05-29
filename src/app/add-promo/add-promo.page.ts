@@ -15,6 +15,9 @@ import {finalize} from "rxjs/operators";
 export class AddPromoPage implements OnInit {
 promo = {} as Product;
 urlImage: Observable<string>;
+producto1;
+producto2;
+products;
   constructor(private toastCtrl: ToastController,
               private loadingCtrl: LoadingController,
               private navCtrl: NavController,
@@ -25,8 +28,12 @@ urlImage: Observable<string>;
 
   ngOnInit() {}
 
-  async createProduct(promo: Product) {
+    ionViewWillEnter() {
+      this.getProducts();
+    }
 
+  async createProduct(promo: Product) {
+    promo["productos"] = [this.producto1,this.producto2];
     if (this.formValidation()) {
       // show loader
       const loader = this.loadingCtrl.create({
@@ -35,7 +42,7 @@ urlImage: Observable<string>;
       (await loader).present();
 
       try {
-        await this.firestore.collection('products').add(promo);
+        await this.firestore.collection('promociones').add(promo);
       } catch (e) {
         this.showToast(e);
       }
@@ -44,7 +51,33 @@ urlImage: Observable<string>;
       (await loader).dismiss();
 
       // redirect to home page
-      this.navCtrl.navigateRoot('home');
+      this.navCtrl.navigateRoot('promociones');
+    }
+  }
+  async getProducts() {
+    // show loader
+    const loader = this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    (await loader).present();
+
+    try {
+      this.firestore.collection('products').snapshotChanges().subscribe(data => {
+        this.products = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            name: e.payload.doc.data()['name'],
+            type: e.payload.doc.data()['type'],
+            price: e.payload.doc.data()['price'],
+            imageURL: e.payload.doc.data()['imageURL'],
+          };
+        });
+      });
+
+      // dismiss loader
+      (await loader).dismiss();
+    } catch (e) {
+      this.showToast(e);
     }
   }
 
@@ -53,9 +86,12 @@ urlImage: Observable<string>;
       this.showToast('Enter name');
       return false;
     }
-
-    if (!this.promo.type) {
-      this.showToast('Enter type');
+    if (!this.producto1) {
+      this.showToast('Enter name');
+      return false;
+    }
+    if (!this.producto2) {
+      this.showToast('Enter name');
       return false;
     }
 

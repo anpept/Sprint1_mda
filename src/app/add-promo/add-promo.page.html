@@ -11,16 +11,14 @@
   </ion-item>
   <ion-item color="fondo">
     <ion-label>Combo1</ion-label>
-    <ion-select  placeholder="Select One">
-      <ion-select-option value="female">Female</ion-select-option>
-      <ion-select-option value="male">Male</ion-select-option>
+    <ion-select [(ngModel)]="producto1" placeholder="Select One">
+      <ion-select-option [value]="product.name"  *ngFor="let product of products">{{product.name}}</ion-select-option>
     </ion-select>
   </ion-item >
   <ion-item color="fondo">
     <ion-label>Combo2</ion-label>
-    <ion-select  placeholder="Select One">
-      <ion-select-option value="female">Female</ion-select-option>
-      <ion-select-option value="male">Male</ion-select-option>
+    <ion-select [(ngModel)]="producto2" placeholder="Select One">
+      <ion-select-option [value]="product.name"  *ngFor="let product of products">{{product.name}}</ion-select-option>
     </ion-select>
   </ion-item >
   <ion-item color="fondo">
