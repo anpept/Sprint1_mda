@@ -31,28 +31,28 @@
           Shopping Cart
         </ion-label>
       </ion-item>
+      <ion-item [routerLink]="'/banner-ofertas'">
+        <ion-icon name="logo-euro" slot="start"></ion-icon>
+        <ion-label>
+          Offers
+        </ion-label>
+      </ion-item>
+      <ion-item [routerLink]="'/find-us'">
+        <ion-icon name="map" slot="start"></ion-icon>
+        <ion-label>
+          Find Us
+        </ion-label>
+      </ion-item>
     </ion-list>
   </ion-menu-toggle>
+  <ion-grid fixed>
+  <ion-row>
+    <ion-col *ngFor="let product of products" size="6">
   <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Oferta</ion-card-subtitle>
-      <ion-card-title>Pizza Margarita</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <img src="/assets/1.jpg">
-      <p>Precio: 12 €</p>
-    </ion-card-content>
-    <ion-item>
-      <ion-icon name="pin" slot="start"></ion-icon>
-      <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-  </ion-card>
-  <ion-card *ngFor="let product of products">
     <ion-card-header>
       <ion-card-title>{{product.name}}</ion-card-title>
     </ion-card-header>
-
+    <ion-img [src]="product.imageURL"></ion-img>
     <ion-card-content >
       <p>Precio: {{product.price}}</p>
       <p>tipo: {{product.type}}</p>
@@ -64,4 +64,7 @@
       </ion-button>
     </ion-item>
   </ion-card>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
 </ion-content>

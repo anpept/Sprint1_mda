@@ -1,0 +1,37 @@
+.home {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  color: grey;
+}
+
+.title {
+  text-align: center;
+}
+
+.logout {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.descuento {
+  color: #fff !important;
+  text-decoration: none;
+  background: #ed3330;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.has-card-footer {
+  padding-bottom: 15px;
+}

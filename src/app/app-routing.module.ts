@@ -52,7 +52,26 @@ const routes: Routes = [
     loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
   },
   {
-    path: 'orders-page',
+    path: 'ofertas',
+    loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
+  },
+  {
+    path: 'add-oferta',
+    loadChildren: () => import('./add-oferta/add-oferta.module').then( m => m.AddOfertaPageModule)
+  },
+  {
+    path: 'banner-ofertas',
+    loadChildren: () => import('./banner-ofertas/banner-ofertas.module').then( m => m.BannerOfertasPageModule)
+  },
+  {
+    path: 'edit-oferta/:id',
+    loadChildren: () => import('./edit-oferta/edit-oferta.module').then( m => m.EditOfertaPageModule)
+  },
+  {
+    path: 'find-us',
+    loadChildren: () => import('./find-us/find-us.module').then( m => m.FindUsPageModule)
+  }
+      path: 'orders-page',
     loadChildren: () => import('./orders-page/orders-page.module').then( m => m.OrdersPagePageModule)
   },
   {
@@ -67,6 +86,7 @@ const routes: Routes = [
     path: 'finish-pay',
     loadChildren: () => import('./finish-pay/finish-pay.module').then( m => m.FinishPayPageModule)
   }
+
 
 ];
 @NgModule({

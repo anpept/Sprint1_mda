@@ -13,6 +13,9 @@ export const environment = {
     messagingSenderId: '541132971929',
     appId: '1:541132971929:web:93efa41e78760bf586bd08',
     measurementId: 'G-Q4J24PZ6HV'
+  },
+  mapbox: {
+    accessToken: 'pk.eyJ1IjoiemFyY3MiLCJhIjoiY2thcnpqMjl1MDZmYjJybDJtYnNkZ20wZSJ9.1MibEGH2L6Zx3X01j0mWsQ'
   }
 };
 
