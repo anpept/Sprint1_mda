@@ -3,6 +3,7 @@ import {LoadingController, ToastController, NavController} from '@ionic/angular'
 import {AngularFireAuth} from '@angular/fire/auth';
 
 
+// @ts-ignore
 @Component({
   selector: 'app-find-us',
   templateUrl: './find-us.page.html',
