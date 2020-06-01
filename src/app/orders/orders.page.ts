@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {AlertController, LoadingController, NavController, ToastController} from '@ionic/angular';
 import {Router} from "@angular/router";
 import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFireAuth} from "@angular/fire/auth";
 
 
 @Component({
@@ -17,11 +18,19 @@ export class OrdersPage {
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               private firestore: AngularFirestore,
-              private alertCtrl: AlertController) {}
+              private alertCtrl: AlertController,
+              public afAuth: AngularFireAuth,
+              public navCtrl: NavController) {}
 
     ionViewWillEnter() {
       this.getFireOrders();
     }
+
+  logout() {
+    this.afAuth.signOut().then(() => {
+      this.navCtrl.navigateRoot('login');
+    });
+  }
 
  async getFireOrders() {
     let loader = this.loadingCtrl.create({

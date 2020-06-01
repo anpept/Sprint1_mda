@@ -4,6 +4,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { CarroService } from './carro.service';
 import * as firebase from 'firebase';
+import {ServicioCheckService} from "../checkout/servicio-check.service";
 
 @Component({
   selector: 'app-home',
@@ -15,13 +16,16 @@ export class CarroPage {
   products;
   cantidades;
   total:number=0;
+  direccion: string;
+
   constructor(
       private loadingCtrl: LoadingController,
       private toastCtrl: ToastController,
       private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
-      private carro: CarroService) {
+      private carro: CarroService,
+      private servicioCheck: ServicioCheckService) {
       }
 
   ionViewWillEnter() {
@@ -42,12 +46,12 @@ export class CarroPage {
       total+=this.cantidades[indice]*this.products[indice].price;
     }
     this.total=total;
+    this.carro.setPrecio(this.total);
   }
   anadirCantidad(i:number){
     this.cantidades[i]++;
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
-    console.log(this.products);
   }
   restarCantidad(i:number){
     if(this.cantidades[i]==1){
@@ -64,5 +68,30 @@ export class CarroPage {
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
     this.carro.setProducts(this.products);
+  }
+
+  goToCheckout(){
+    if (this.addressValidator()){
+      console.log(this.direccion);
+      this.servicioCheck.setDireccion(this.direccion);
+      console.log(this.servicioCheck.getDireccion());
+      this.navCtrl.navigateRoot('checkout');
+      this.servicioCheck.setPrecio(this.total.toFixed(2));
+    }
+  }
+
+  addressValidator() {
+    if (!this.direccion) {
+      this.showToast('Enter a shipping address');
+      return false;
+    }
+    return true;
+  }
+
+  showToast(message: string) {
+    this.toastCtrl.create({
+      message,
+      duration: 3000
+    }).then(toastData => toastData.present());
   }
 }

@@ -14,6 +14,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireStorageModule} from "@angular/fire/storage";
+import {PayPal} from '@ionic-native/paypal/ngx';
+import {CarroService} from "./carro/carro.service";
+import {ServicioCheckService} from "./checkout/servicio-check.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +30,10 @@ import { AngularFireStorageModule} from "@angular/fire/storage";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    PayPal,
+    CarroService,
+    ServicioCheckService,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar color="cabecera">
-    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/admin-panel'"></ion-icon>
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/orders-page'"></ion-icon>
       Admin Orders</ion-title>
-    <ion-button color="secundario" class="logout" (click)="logout()">
+    <ion-button color="secundario" class="logout" (click)="logout()">git
       <ion-icon name="log-out-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -14,7 +14,7 @@
       <ion-label>
         <p>Order Date: {{ order.date.seconds * 1000 | date:'dd/MM/yyyy HH:mm:ss'}}</p>
         <p>Products:</p>
-        <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product}}</p>
+        <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</p>
         <p>Price: {{order.price}}€</p>
         <p>User: {{order.user}}</p>
         <p>Address: {{order.address}}</p>
@@ -27,7 +27,7 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-button color="cabecera" expand="full" [routerLink]="'/admin-panel'">
+  <ion-button color="cabecera" expand="full" [routerLink]="'/orders-page'">
     Back
   </ion-button>
 </ion-content>

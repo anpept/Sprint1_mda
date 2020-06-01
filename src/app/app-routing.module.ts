@@ -66,9 +66,25 @@ const routes: Routes = [
   {
     path: 'edit-oferta/:id',
     loadChildren: () => import('./edit-oferta/edit-oferta.module').then( m => m.EditOfertaPageModule)
-  },  {
+  },
+  {
     path: 'find-us',
     loadChildren: () => import('./find-us/find-us.module').then( m => m.FindUsPageModule)
+  }
+      path: 'orders-page',
+    loadChildren: () => import('./orders-page/orders-page.module').then( m => m.OrdersPagePageModule)
+  },
+  {
+    path: 'filter/:filter',
+    loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'finish-pay',
+    loadChildren: () => import('./finish-pay/finish-pay.module').then( m => m.FinishPayPageModule)
   }
 
 

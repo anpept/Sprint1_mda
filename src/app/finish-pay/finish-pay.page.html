@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/user'"></ion-icon>
+      Finish payment</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-start ion-margin-start" color="fondo">
+  <div *ngIf="order.estado === 'Cancelado'"><h1><ion-icon name="warning"></ion-icon>&nbsp;Lo sentimos, ha ocurrido un error y no se ha podido procesar el pago</h1>
+  <p>Inténtalo de nuevo más tarde.</p></div>
+  <div *ngIf="order.estado == null"><h1><ion-icon name="warning"></ion-icon>&nbsp;Ha Ocurrido un error inesperado. Intente seguir este <a [href]="'user'">enlace</a></h1></div>
+  <div *ngIf="order.estado == 'Completado'">
+    <h1>Gracias {{order.user}} por confiar en nosotros. Su pedido está {{mensaje}}</h1>
+    <hr>
+    <h3>Detalles del pedido:</h3>
+    <p>Order Date: {{ order.date | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+    <p>Products:</p>
+    <p *ngFor="let product of order.products">&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</p>
+    <p>Price: {{order.price}}€</p>
+    <p>Address: {{order.address}}</p>
+  </div>
+</ion-content>
