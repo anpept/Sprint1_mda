@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { CarroService } from './carro.service';
+import { CarroService } from '../carro.service';
 import * as firebase from 'firebase';
 import {ServicioCheckService} from "../checkout/servicio-check.service";
 
@@ -19,15 +19,15 @@ export class CarroPage {
   direccion: string;
 
   constructor(
-      private loadingCtrl: LoadingController,
-      private toastCtrl: ToastController,
-      private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
       private carro: CarroService,
       private servicioCheck: ServicioCheckService) {
       }
-
+      ngOnInit() {
+        this.products=this.carro.getProducts();
+        this.cantidades=this.carro.getCantidades();
+      }
   ionViewWillEnter() {
     
     this.products=this.carro.getProducts();

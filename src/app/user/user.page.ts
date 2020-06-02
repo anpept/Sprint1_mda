@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { CarroService } from '../carro/carro.service';
+import { CarroService } from '../carro.service';
 import { ActivatedRoute } from '@angular/router';
 
 
