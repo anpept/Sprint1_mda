@@ -6,7 +6,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar showCancelButton (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-searchbar showCancelButton [(ngModel)]="searchItem" (ionChange)="busqueda()"></ion-searchbar>
+  <ion-list>
+    <ion-item >
+      <ion-label>Bebida</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Bebida")'></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Refresco</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Refresco")'></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Entrante</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Entrante")'></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Picoteo</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Picoteo")'></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Primer plato</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Primer plato")'></ion-checkbox>
+    </ion-item>
+    <ion-item >
+      <ion-label>Pizza</ion-label>
+      <ion-checkbox slot="end" (click)='categorizar("Pizza")'></ion-checkbox>
+    </ion-item>
+  </ion-list>
   <ion-grid fixed>
     <ion-row>
       <ion-col *ngFor="let product of productList" size="6">
