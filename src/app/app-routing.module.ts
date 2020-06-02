@@ -28,6 +28,12 @@ const routes: Routes = [
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
   },{
+<<<<<<< HEAD
+=======
+    path: 'add-promo',
+    loadChildren: () => import('./add-promo/add-promo.module').then( m => m.AddPromoPageModule)
+  },{
+>>>>>>> addpromo
     path: 'carro',
     loadChildren: () => import('./carro/carro.module').then( m => m.CarroPageModule)
   },
