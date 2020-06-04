@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="cabecera">
-    <ion-title>MPD Admin Section</ion-title>
-    <ion-button class="cart" (click)="this.navCtrl.navigateRoot('carro');">Cart</ion-button>
-    <ion-button class="user" (click)="this.navCtrl.navigateRoot('user');">Home</ion-button>
-    <ion-button class="logout" (click)="logout()">Log out</ion-button>
+    <ion-title class="title">Shopping Cart</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
     <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
   </ion-toolbar>
 </ion-header>

@@ -22,7 +22,9 @@
           <p>Price {{oferta.price}}</p>
           <p class="descuento">Descuento {{oferta.desc}}</p>
           <p>Final price {{oferta.final_price}}</p>
-          <p><ion-button color="primary">Add to Cart</ion-button></p>
+          <p><ion-button (click)='addToCart(oferta)'>
+            <ion-icon name="cart-outline" slot="icon-only" ></ion-icon>
+          </ion-button></p>
         </ion-card-content>
        </ion-card-header>
      </ion-card>

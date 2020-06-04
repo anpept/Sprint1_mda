@@ -20,6 +20,7 @@ public loadedProductList: any[];
               private firestore: AngularFirestore,
               public afAuth: AngularFireAuth,
               public navCtrl: NavController,
+              private carro: CarroService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -93,6 +94,10 @@ public loadedProductList: any[];
       message,
       duration: 3000
     }).then(toastData => toastData.present());
+  }
+  addToCart(i){
+    console.log(this.carro.addProduct(i));
+
   }
 
 }

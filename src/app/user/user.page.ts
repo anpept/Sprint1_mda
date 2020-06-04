@@ -22,7 +22,7 @@ export class UserPage implements OnInit {
     private firestore: AngularFirestore,
     public afAuth: AngularFireAuth,
     public navCtrl: NavController,
-    private carro:CarroService,
+    private carro: CarroService,
     private route: ActivatedRoute) {}
 
   ngOnInit() {
