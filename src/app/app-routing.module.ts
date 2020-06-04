@@ -27,10 +27,12 @@ const routes: Routes = [
   {
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
-  },{
+  },
+  {
     path: 'add-promo',
     loadChildren: () => import('./add-promo/add-promo.module').then( m => m.AddPromoPageModule)
-  },{
+  },
+  {
     path: 'carro',
     loadChildren: () => import('./carro/carro.module').then( m => m.CarroPageModule)
   },
@@ -53,6 +55,10 @@ const routes: Routes = [
   {
     path: 'contact-us',
     loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'promociones',
+    loadChildren: () => import('./promociones/promociones.module').then( m => m.PromocionesPageModule)
   },
   {
     path: 'ofertas',
@@ -89,8 +95,8 @@ const routes: Routes = [
     path: 'finish-pay',
     loadChildren: () => import('./finish-pay/finish-pay.module').then( m => m.FinishPayPageModule)
   }
-
-
+  
+  
 ];
 @NgModule({
   imports: [

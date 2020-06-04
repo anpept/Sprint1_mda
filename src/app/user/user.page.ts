@@ -15,6 +15,7 @@ export class UserPage implements OnInit {
 
   cliente: any;
   products: any;
+  promociones: any;
   constructor(
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
@@ -27,8 +28,15 @@ export class UserPage implements OnInit {
   ngOnInit() {
   }
 
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
+
   ionViewWillEnter() {
     this.getProducts();
+    this.getPromociones();
   }
 
   async getProducts() {
@@ -46,6 +54,32 @@ export class UserPage implements OnInit {
             name: e.payload.doc.data()['name'],
             type: e.payload.doc.data()['type'],
             price: e.payload.doc.data()['price'],
+            imageURL: e.payload.doc.data()['imageURL'],
+          };
+        });
+      });
+
+      // dismiss loader
+      (await loader).dismiss();
+    } catch (e) {
+      this.showToast(e);
+    }
+  }
+
+  async getPromociones() {
+    // show loader
+    const loader = this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    (await loader).present();
+
+    try {
+      this.firestore.collection('promociones').snapshotChanges().subscribe(data => {
+        this.promociones = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            name: e.payload.doc.data()['name'],
+            precio: e.payload.doc.data()['precio'],
             imageURL: e.payload.doc.data()['imageURL'],
           };
         });

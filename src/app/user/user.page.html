@@ -56,7 +56,9 @@
     <ion-card-content >
       <p>Precio: {{product.price}}</p>
       <p>tipo: {{product.type}}</p>
-      <p>esto: {{product.imgageURL}}</p>
+      <ion-avatar slot="start">
+          <ion-img [src]="product.imageURL"></ion-img>
+        </ion-avatar>
     </ion-card-content>
     <ion-item>
       <ion-button (click)='addToCart(product)'>
@@ -67,4 +69,19 @@
     </ion-col>
   </ion-row>
   </ion-grid>
+  <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let promocion of promociones">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ promocion.name }} - ${{ promcion.price }}
+              </ion-card-title>
+              <ion-card-content>
+                <ion-img class= "imgpromo" [src]="promocion.imageURL"></ion-img>
+                <ion-button expand="full">Add to Cart</ion-button>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+      </ion-slide>
+    </ion-slides>
 </ion-content>
