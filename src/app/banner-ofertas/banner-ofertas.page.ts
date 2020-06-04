@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { CarroService } from '../carro/carro.service';
+import { CarroService } from '../carro.service';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase';
 
@@ -96,6 +96,7 @@ public loadedProductList: any[];
     }).then(toastData => toastData.present());
   }
   addToCart(i){
+    i.price=i.final_price.substring(0, i.final_price.length-1);
     console.log(this.carro.addProduct(i));
 
   }
