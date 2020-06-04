@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AngularFireDatabase,  FirebaseListObservable } from 'angularfire2/database';
 
@@ -22,4 +22,4 @@ export class MapService {
     removeMarker($key: string) {
         return this.db.object('/markers/' + $key).remove();
     }
-}
+}*/
