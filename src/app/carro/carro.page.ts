@@ -46,7 +46,7 @@ export class CarroPage {
       total+=this.cantidades[indice]*this.products[indice].price;
     }
     this.total=total;
-    this.carro.setPrecio(this.total);
+    //this.carro.setPrecio(this.total);
   }
   anadirCantidad(i:number){
     this.cantidades[i]++;
@@ -70,28 +70,4 @@ export class CarroPage {
     this.carro.setProducts(this.products);
   }
 
-  goToCheckout(){
-    if (this.addressValidator()){
-      console.log(this.direccion);
-      this.servicioCheck.setDireccion(this.direccion);
-      console.log(this.servicioCheck.getDireccion());
-      this.navCtrl.navigateRoot('checkout');
-      this.servicioCheck.setPrecio(this.total.toFixed(2));
-    }
-  }
-
-  addressValidator() {
-    if (!this.direccion) {
-      this.showToast('Enter a shipping address');
-      return false;
-    }
-    return true;
-  }
-
-  showToast(message: string) {
-    this.toastCtrl.create({
-      message,
-      duration: 3000
-    }).then(toastData => toastData.present());
-  }
 }
