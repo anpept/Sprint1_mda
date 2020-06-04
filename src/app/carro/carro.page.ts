@@ -19,6 +19,9 @@ export class CarroPage {
   direccion: string;
 
   constructor(
+      private loadingCtrl: LoadingController,
+      private toastCtrl: ToastController,
+      private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
       private carro: CarroService,
@@ -68,6 +71,30 @@ export class CarroPage {
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
     this.carro.setProducts(this.products);
+  }
+  goToCheckout(){
+    if (this.addressValidator()){
+      console.log(this.direccion);
+      this.servicioCheck.setDireccion(this.direccion);
+      console.log(this.servicioCheck.getDireccion());
+      this.navCtrl.navigateRoot('checkout');
+      this.servicioCheck.setPrecio(this.total.toFixed(2));
+    }
+  }
+
+  addressValidator() {
+    if (!this.direccion) {
+      this.showToast('Enter a shipping address');
+      return false;
+    }
+    return true;
+  }
+
+  showToast(message: string) {
+    this.toastCtrl.create({
+      message,
+      duration: 3000
+    }).then(toastData => toastData.present());
   }
 
 }
