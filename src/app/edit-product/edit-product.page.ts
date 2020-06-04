@@ -34,7 +34,7 @@ export class EditProductPage implements OnInit {
     //this.urlImage =
   }
 
-  async getProductById(id: string){
+  async getProductById(id: string) {
     let loader = this.loadingCtrl.create({
       message: 'Please wait...'
     });

@@ -27,7 +27,12 @@ const routes: Routes = [
   {
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
-  },{
+  },
+  {
+    path: 'add-promo',
+    loadChildren: () => import('./add-promo/add-promo.module').then( m => m.AddPromoPageModule)
+  },
+  {
     path: 'carro',
     loadChildren: () => import('./carro/carro.module').then( m => m.CarroPageModule)
   },
@@ -54,8 +59,44 @@ const routes: Routes = [
   {
     path: 'promociones',
     loadChildren: () => import('./promociones/promociones.module').then( m => m.PromocionesPageModule)
+  },
+  {
+    path: 'ofertas',
+    loadChildren: () => import('./ofertas/ofertas.module').then( m => m.OfertasPageModule)
+  },
+  {
+    path: 'add-oferta',
+    loadChildren: () => import('./add-oferta/add-oferta.module').then( m => m.AddOfertaPageModule)
+  },
+  {
+    path: 'banner-ofertas',
+    loadChildren: () => import('./banner-ofertas/banner-ofertas.module').then( m => m.BannerOfertasPageModule)
+  },
+  {
+    path: 'edit-oferta/:id',
+    loadChildren: () => import('./edit-oferta/edit-oferta.module').then( m => m.EditOfertaPageModule)
+  },
+  {
+    path: 'find-us',
+    loadChildren: () => import('./find-us/find-us.module').then( m => m.FindUsPageModule)
+  },{
+      path: 'orders-page',
+    loadChildren: () => import('./orders-page/orders-page.module').then( m => m.OrdersPagePageModule)
+  },
+  {
+    path: 'filter/:filter',
+    loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'finish-pay',
+    loadChildren: () => import('./finish-pay/finish-pay.module').then( m => m.FinishPayPageModule)
   }
-
+  
+  
 ];
 @NgModule({
   imports: [

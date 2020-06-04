@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import {LoadingController, ToastController, NavController} from '@ionic/angular';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { CarroService } from './carro.service';
+import { CarroService } from '../carro.service';
 import * as firebase from 'firebase';
+import {ServicioCheckService} from "../checkout/servicio-check.service";
 
 @Component({
   selector: 'app-home',
@@ -15,15 +16,18 @@ export class CarroPage {
   products;
   cantidades;
   total:number=0;
+  direccion: string;
+
   constructor(
-      private loadingCtrl: LoadingController,
-      private toastCtrl: ToastController,
-      private firestore: AngularFirestore,
       public afAuth: AngularFireAuth,
       public navCtrl: NavController,
-      private carro: CarroService) {
+      private carro: CarroService,
+      private servicioCheck: ServicioCheckService) {
       }
-
+      ngOnInit() {
+        this.products=this.carro.getProducts();
+        this.cantidades=this.carro.getCantidades();
+      }
   ionViewWillEnter() {
     
     this.products=this.carro.getProducts();
@@ -42,12 +46,12 @@ export class CarroPage {
       total+=this.cantidades[indice]*this.products[indice].price;
     }
     this.total=total;
+    //this.carro.setPrecio(this.total);
   }
   anadirCantidad(i:number){
     this.cantidades[i]++;
     this.precioTotal();
     this.carro.setCantidades(this.cantidades);
-    console.log(this.products);
   }
   restarCantidad(i:number){
     if(this.cantidades[i]==1){
@@ -65,4 +69,5 @@ export class CarroPage {
     this.carro.setCantidades(this.cantidades);
     this.carro.setProducts(this.products);
   }
+
 }

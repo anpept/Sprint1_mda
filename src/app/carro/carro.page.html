@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar color="cabecera">
-    <ion-title class="title">Shopping Cart</ion-title>
+    <ion-title>MPD Admin Section</ion-title>
+    <ion-button class="cart" (click)="this.navCtrl.navigateRoot('carro');">Cart</ion-button>
+    <ion-button class="user" (click)="this.navCtrl.navigateRoot('user');">Home</ion-button>
     <ion-button class="logout" (click)="logout()">Log out</ion-button>
     <ion-icon name="home" [routerLink]="'/user'" class="home"></ion-icon>
   </ion-toolbar>
@@ -19,7 +21,15 @@
       </ion-item>
         
     </ion-item-sliding>
-    <ion-item class="no-padding" color="fondo">Total price: {{total}}€</ion-item>
+    <ion-item class="no-padding" color="fondo">Total price: {{total.toFixed(2)}}€</ion-item>
   </ion-list>
+  <p class="ion-padding-start ion-padding-end">Introduce la dirección a la que se enviará el pedido</p>
+  <ion-item color="cabecera">
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input type="text" [(ngModel)]="direccion" required=""></ion-input>
+  </ion-item>
+  <ion-button class="ion-padding" color="secundario" expand="full" (click)="goToCheckout()">
+    Checkout
+  </ion-button>
 </ion-content>
 

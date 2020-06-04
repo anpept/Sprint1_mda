@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="cabecera">
+    <ion-title><ion-icon name="chevron-back-outline" [routerLink]="'/carro'"></ion-icon>
+      Checkout</ion-title>
+    <ion-button color="secundario" class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-start ion-margin-start" color="fondo">
+
+  <h4>{{user.name}} {{user.surname}} elija su forma de pago</h4>
+  <h3>Total: {{paymentAmount}}€</h3>
+  <p>Address: {{direccion}}</p>
+
+  <!--<ion-button class="ion-padding" color="secundario" expand="full" (click)="setPedido('Completado', 'Completado')">
+    Create
+  </ion-button>-->
+
+  <div id="paypal-button-container" class="ion-text-center ion-padding-end"></div>
+
+  <div>
+    <h3>Credenciales de Prueba de PayPal:</h3>
+    <h5>Correo: MDA-user@personal.example.com</h5>
+    <h5>Contraseña: 12345678</h5>
+  </div>
+
+</ion-content>
