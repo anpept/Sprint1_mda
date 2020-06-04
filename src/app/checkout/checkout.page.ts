@@ -4,7 +4,6 @@ import {AngularFireModule} from "@angular/fire";
 import {User} from "../models/user.model";
 import {LoadingController, NavController, ToastController} from "@ionic/angular";
 import {AngularFirestore} from "@angular/fire/firestore";
-import { PayPal, PayPalPayment, PayPalConfiguration } from "@ionic-native/paypal/ngx";
 import {Order} from "../models/order.model";
 import {ServicioCheckService} from "./servicio-check.service";
 import {CarroService} from "../carro/carro.service";
@@ -31,7 +30,6 @@ export class CheckoutPage implements OnInit {
   constructor(private afAuth: AngularFireModule,
               private loadingCtrl: LoadingController,
               private firestore: AngularFirestore,
-              private payPal: PayPal,
               private servicioCheck: ServicioCheckService,
               private navCtrl: NavController,
               private carro: CarroService,
